@@ -1,0 +1,15 @@
+Anchor: Step 1  
+Location: “These are four different scientific disciplines: structural biology, pharmacology, materials science, and mathematics. Hence the documented gains are not confined to a single problem area. This establishes (iii).”  
+Description: Justification Gap. The proof asserts, without an explicit criterion or supporting argument, that the four named problem descriptions are four distinct scientific disciplines/problem areas. This classification is not stated in A5 and is needed to establish claim (iii).
+
+Anchor: Step 2  
+Location: “A5 states GNoME produced 2.2 million \emph{novel} stable crystal structures. Since the structures are described as novel, they were not part of the prior human record; the result is not a faster reproduction of already-known structures. By definition, case $\gamma$ is a qualitative breakthrough.”  
+Description: Critical Error. The definition of “qualitative breakthrough” requires a solution to a problem that appears in A5 as having been open/unsolved in the prior human scientific record. A5 says the structures were novel, but it does not state that GNoME solved an open problem. Novel discovery is not the same as solving an open problem, so the definition is misapplied.
+
+Anchor: Step 2  
+Location: “A5 states AI-assisted proof search produced \emph{novel} proof strategies for open combinatorics problems. Since the strategies are described as novel and the problems as open, the result is not a faster execution of a previously completed proof. By definition, case $\lambda$ is a qualitative breakthrough.”  
+Description: Critical Error. A5 says AI produced novel proof strategies, not that it produced complete proofs or solutions to the open combinatorics problems. The definition requires a solution to an open problem, so the proof has not established that case $\lambda$ is a qualitative breakthrough.
+
+Anchor: Step 2  
+Location: “Three independent domains ($\alpha$, $\gamma$, $\lambda$) exhibit qualitative breakthroughs. This establishes claim (i).”  
+Description: Justification Gap. The proof does not justify the “independent domains” condition. It labels the cases as structural biology, materials science, and mathematics, but gives no explicit criterion or argument establishing domain independence.

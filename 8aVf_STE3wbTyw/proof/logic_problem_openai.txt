@@ -1,0 +1,28 @@
+**Proof structure: not valid as written.**
+
+The **top-level decomposition is reasonable**: Subproblem 1 reduces the theorem to proving C1–C4, and Subproblems 2–5 correspond to C1–C4 respectively. No major subproblem is irrelevant. However, the dependency structure is not closed under Assumptions A1–A5.
+
+Issues:
+
+1. **Subproblem 2 uses extra unproved assumptions.**  
+   It assumes that “AI-assisted research improves future model development,” that compute/data access continues in the needed way, and effectively that the past exponential decline in cost per FLOP continues into the future. These are not explicitly among A1–A5, nor proved earlier.
+
+2. **Subproblem 2’s non-reversion claim depends on adoption/embedding not yet established.**  
+   To use switching costs to show reversion to a pre-AI paradigm is effectively impossible, one needs broad and deep AI integration. That seems to depend on A3, C2, or C4, but Subproblem 2 does not list A3 and comes before Subproblems 3 and 5. Thus the claimed independence/order is problematic.
+
+3. **Possible circular dependence between C1 and C3.**  
+   Subproblem 2 uses AI-assisted research as part of the feedback loop for capability growth, while Subproblem 4 assumes continuing AI capability improvement through scaling. If Subproblem 2 relies on C3 and Subproblem 4 relies on C1, the structure is circular unless an independent bridge lemma is added.
+
+4. **Subproblem 3 needs an explicit economic bridge.**  
+   A2 gives documented productivity gains, and A4 gives switching costs, but the outline also needs a principle connecting productivity gains to broad adoption, labor-market restructuring, and aggregate irreversibility. If this is meant to be a “standard adoption-incentive argument,” it should be stated as a lemma or assumption.
+
+5. **Subproblem 4 assumes continued capability improvement.**  
+   The statement assumes that AI capability continues to improve through scaling. That is close to part of C1, or at least depends on Subproblem 2. The dependency should be made explicit; otherwise it is an extra premise.
+
+6. **Subproblem 5 uses an extra “operational benefits” premise.**  
+   A3 gives current embedding and A4 gives switching costs, but Subproblem 5 also assumes AI integration produces operational benefits. This may be intended to follow from A2, but the dependency is not stated. It also needs a bridge from “embedded with high switching costs” to “structurally unavoidable.”
+
+7. **The claimed independence of the four sections is not accurate.**  
+   C1, C3, and C4 appear mutually supporting: capability growth helps scientific acceleration; scientific acceleration helps capability growth; embedding helps non-reversion. The proof can still work, but the dependency graph must be made explicit and acyclic.
+
+So the outline has the right high-level shape, but as written it would prove a stronger conditional theorem with additional hidden premises, not the stated theorem from only A1–A5.

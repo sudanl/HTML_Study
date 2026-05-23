@@ -1,0 +1,321 @@
+A complete proof of \(\mathrm{C2}\) **cannot be obtained from only \(\mathrm{A2}\) and \(\mathrm{A4}\) as stated**. The assumptions are enough to prove a narrower two-strategy NPV dominance claim, but they do **not** by themselves justify the full conclusion “unique economically rational strategy at societal scale” or “irreversible,” and they do not bound any independent “benefits of reversion.”
+
+Below is the rigorous diagnosis, followed by a corrected proof for the strongest statement that does follow under an additional no-independent-benefit convention.
+
+---
+
+## 1. Why the theorem is not provable as stated
+
+To compare adoption and reversion, one must define the relative NPV
+
+\[
+\Delta(d,\rho)
+=
+\operatorname{NPV}_{\mathrm{rev}}(d,\rho)
+-
+\operatorname{NPV}_{\mathrm{cont}}(d,\rho).
+\]
+
+A natural continuous-time comparison would be
+
+\[
+\Delta(d,\rho)
+=
+B(d,\rho)
+-
+S(d)
++
+\int_{0}^{\infty} e^{-\rho t}
+\bigl(\Pi_0-\Pi_{\mathrm{AI}}(d)\bigr)\,dt,
+\]
+
+where \(B(d,\rho)\) denotes the present value of any independent economic benefits of reversion, such as avoided regulatory penalties, avoided AI operating costs, liability reductions, subsidies, or other non-productivity benefits.
+
+Assumptions \(\mathrm{A2}\) and \(\mathrm{A4}\) imply only that
+
+\[
+\Pi_{\mathrm{AI}}(d)\ge (1+\gamma)\Pi_0
+\]
+
+and
+
+\[
+S(d)\ge c d^2.
+\]
+
+Therefore,
+
+\[
+\Delta(d,\rho)
+\le
+B(d,\rho)
+-
+c d^2
+-
+\frac{\gamma \Pi_0}{\rho}.
+\]
+
+The sign of \(\Delta(d,\rho)\) is not determined unless \(B(d,\rho)\) is bounded. No such bound appears in \(\mathrm{A2}\) or \(\mathrm{A4}\).
+
+Indeed, take
+
+\[
+\Pi_{\mathrm{AI}}(d)=(1+\gamma)\Pi_0,
+\qquad
+S(d)=c d^2,
+\qquad
+B(d,\rho)=2c d^2.
+\]
+
+Then \(\mathrm{A2}\) and \(\mathrm{A4}\) both hold, but
+
+\[
+\Delta(d,\rho)
+=
+2c d^2
+-
+c d^2
+-
+\frac{\gamma \Pi_0}{\rho}
+=
+c d^2
+-
+\frac{\gamma \Pi_0}{\rho}.
+\]
+
+Hence
+
+\[
+\Delta(d,\rho)>0
+\]
+
+whenever
+
+\[
+d>\sqrt{\frac{\gamma \Pi_0}{c\rho}}.
+\]
+
+So in this admissible model, reversion has **positive** NPV for sufficiently large \(d\), contradicting the claimed lock-in conclusion. Thus \(\mathrm{C2}\) is not derivable from \(\mathrm{A2}\) and \(\mathrm{A4}\) alone.
+
+---
+
+## 2. What can be proved under a stricter two-strategy model
+
+If the intended model is that reversion has **no independent benefits** beyond returning to baseline productivity \(\Pi_0\), then a rigorous proof is possible. But this is an additional modeling convention, not a consequence of \(\mathrm{A2}\) and \(\mathrm{A4}\).
+
+### Corrected theorem
+
+Assume, in addition to \(\mathrm{A2}\) and \(\mathrm{A4}\), that:
+
+1. Productivity is measured in annual economic-value units.
+2. The only two available strategies are:
+   - continue AI use at integration depth \(d\);
+   - revert completely to the pre-AI baseline.
+3. Continuing AI has annual productivity \(\Pi_{\mathrm{AI}}(d)\).
+4. Reversion incurs a one-time cost \(S(d)\) and thereafter yields annual productivity \(\Pi_0\).
+5. Reversion has no other benefits or costs.
+
+Then for every \(d\ge 1\) and every \(\rho>0\), reverting has strictly negative NPV relative to continuing AI. Hence, within this two-strategy model, continuing AI is the unique NPV-maximizing strategy.
+
+### Proof
+
+Define the NPV of continuing AI as
+
+\[
+V_{\mathrm{cont}}(d,\rho)
+=
+\int_0^\infty e^{-\rho t}\Pi_{\mathrm{AI}}(d)\,dt
+=
+\frac{\Pi_{\mathrm{AI}}(d)}{\rho}.
+\]
+
+Define the NPV of reverting to the baseline as
+
+\[
+V_{\mathrm{rev}}(d,\rho)
+=
+-S(d)
++
+\int_0^\infty e^{-\rho t}\Pi_0\,dt
+=
+-S(d)+\frac{\Pi_0}{\rho}.
+\]
+
+Therefore the relative NPV of reversion is
+
+\[
+\Delta(d,\rho)
+=
+V_{\mathrm{rev}}(d,\rho)
+-
+V_{\mathrm{cont}}(d,\rho).
+\]
+
+Substituting the above expressions gives
+
+\[
+\Delta(d,\rho)
+=
+-S(d)
++
+\frac{\Pi_0-\Pi_{\mathrm{AI}}(d)}{\rho}.
+\]
+
+By \(\mathrm{A2}\),
+
+\[
+\Pi_{\mathrm{AI}}(d)\ge (1+\gamma)\Pi_0.
+\]
+
+Hence
+
+\[
+\Pi_0-\Pi_{\mathrm{AI}}(d)
+\le
+\Pi_0-(1+\gamma)\Pi_0
+=
+-\gamma \Pi_0.
+\]
+
+Therefore,
+
+\[
+\frac{\Pi_0-\Pi_{\mathrm{AI}}(d)}{\rho}
+\le
+-\frac{\gamma \Pi_0}{\rho}.
+\]
+
+By \(\mathrm{A4}\),
+
+\[
+S(d)\ge c d^2.
+\]
+
+Thus
+
+\[
+-S(d)\le -c d^2.
+\]
+
+Combining these inequalities,
+
+\[
+\Delta(d,\rho)
+\le
+-cd^2
+-
+\frac{\gamma \Pi_0}{\rho}.
+\]
+
+Since \(c>0\), \(d\ge 1\), \(\gamma>0\), \(\rho>0\), and \(\Pi_0\ge 0\), we have
+
+\[
+-cd^2
+-
+\frac{\gamma \Pi_0}{\rho}
+<0.
+\]
+
+Therefore,
+
+\[
+\Delta(d,\rho)<0.
+\]
+
+Equivalently,
+
+\[
+V_{\mathrm{rev}}(d,\rho)
+<
+V_{\mathrm{cont}}(d,\rho).
+\]
+
+Thus reverting to the pre-AI baseline has strictly negative NPV relative to continued AI use for every \(d\ge 1\) and every \(\rho>0\).
+
+In this restricted model, one may take
+
+\[
+d^*(\gamma,c,\rho)=1.
+\]
+
+Indeed, no nontrivial threshold is needed: reversion is already strictly dominated for all integration depths covered by the assumptions.
+
+\(\square\)
+
+---
+
+## 3. If reversion benefits are allowed, an extra assumption is needed
+
+A more general valid theorem would require a bound on reversion benefits. For example, suppose the present value of all independent benefits of reversion satisfies
+
+\[
+B(d,\rho)\le \overline B(\rho)
+\]
+
+for all \(d\ge 1\). Then
+
+\[
+\Delta(d,\rho)
+\le
+\overline B(\rho)
+-
+c d^2
+-
+\frac{\gamma \Pi_0}{\rho}.
+\]
+
+Thus \(\Delta(d,\rho)<0\) whenever
+
+\[
+c d^2
+>
+\overline B(\rho)
+-
+\frac{\gamma \Pi_0}{\rho}.
+\]
+
+Equivalently, it suffices that
+
+\[
+d>
+\sqrt{
+\frac{
+\bigl(\overline B(\rho)-\gamma\Pi_0/\rho\bigr)_+
+}{c}
+},
+\]
+
+where
+
+\[
+x_+ := \max\{x,0\}.
+\]
+
+So one possible threshold is
+
+\[
+d^*(\rho)
+=
+\max\left\{
+1,
+\sqrt{
+\frac{
+\bigl(\overline B(\rho)-\gamma\Pi_0/\rho\bigr)_+
+}{c}
+}
+\right\}.
+\]
+
+But this threshold depends on \(\overline B(\rho)\) and \(\Pi_0\). Therefore a threshold depending only on \(\gamma\), \(c\), and \(\rho\) is not justified by the stated assumptions.
+
+---
+
+## Conclusion
+
+The theorem \(\mathrm{C2}\) is too strong as written. From \(\mathrm{A2}\) and \(\mathrm{A4}\) alone, one can rigorously prove only the following narrower result:
+
+\[
+\text{If reversion has no independent benefits, then reversion is NPV-negative for all } d\ge 1.
+\]
+
+The broader claims of societal-scale uniqueness and irreversibility require additional assumptions about aggregation, available strategies, bounded reversion benefits, and the absence of offsetting economic gains from abandoning AI.

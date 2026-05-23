@@ -1,0 +1,205 @@
+CONSOLIDATED BUG REPORT
+Solution: proof/section_3_scientific_force_multiplication.tex
+Mode: pessimistic (3 independent verifier runs)
+Verdict: ISSUES_FOUND
+
+All three runs flagged issues. A run is CLEAN only if it flags zero issues; none of the three
+runs were CLEAN. Issues are listed below with the runs that flagged them.
+
+==============================================================================
+ISSUES (in order of severity)
+==============================================================================
+
+ISSUE 1 [CRITICAL] — flagged by: Run 1, Run 2, Run 3
+Anchor: Step 2
+Location: Case gamma (GNoME), "By definition, case gamma is a qualitative breakthrough."
+Description: The proof's own definition of "qualitative breakthrough" requires a solution
+to a problem that appears in A5 as having been open/unsolved in the prior human scientific
+record. A5 states the GNoME structures were novel, but does NOT state that stable
+crystal-structure discovery was an open problem. Novel discovery is not the same as solving
+an open problem. The definition is misapplied; case gamma does not qualify as a qualitative
+breakthrough under the stated definition.
+
+ISSUE 2 [CRITICAL] — flagged by: Run 1, Run 2, Run 3
+Anchor: Step 2
+Location: Case lambda (Lean4 AI), "By definition, case lambda is a qualitative breakthrough."
+Description: A5 states AI produced novel proof strategies, NOT that it produced complete
+proofs or solutions to the open combinatorics problems. The definition of "qualitative
+breakthrough" requires producing "a solution to a problem." Proof strategies are not
+solutions to the open problems themselves. The definition is misapplied; case lambda does
+not qualify as a qualitative breakthrough under the stated definition.
+
+ISSUE 3 [CRITICAL] — flagged by: Run 1
+Anchor: Step 2
+Location: "Three independent domains (alpha, gamma, lambda) exhibit qualitative
+breakthroughs. This establishes claim (i)."
+Description: This conclusion cascades from the two invalid classifications above. Since
+cases gamma and lambda have not been validly shown to be qualitative breakthroughs, the
+proof has not established three qualifying domains. Claim (i) is not established.
+
+ISSUE 4 [JUSTIFICATION GAP] — flagged by: Run 1, Run 2, Run 3
+Anchor: Step 1
+Location: "These are four different scientific disciplines: structural biology,
+pharmacology, materials science, and mathematics. Hence the documented gains are not
+confined to a single problem area. This establishes (iii)."
+Description: The classification of the four cases into four distinct scientific disciplines
+is asserted without an explicit criterion or argument drawn from A5. A5 does not assign
+discipline labels; the proof introduces them without justification. This unsupported
+classification is the sole basis for establishing claim (iii).
+
+ISSUE 5 [JUSTIFICATION GAP] — flagged by: Run 2, Run 3
+Anchor: Step 2
+Location: "Three independent domains (alpha, gamma, lambda) exhibit qualitative
+breakthroughs. This establishes claim (i)."
+Description: The term "independent domains" is used without defining independence or
+proving that the three candidate domains satisfy any independence condition. No criterion
+for domain independence is stated or applied.
+
+==============================================================================
+ADVERSARIAL CHECKLIST (per task instructions)
+==============================================================================
+
+1. Does the proof establish all three sub-claims (i), (ii), (iii)?
+   - Claim (i): NOT ESTABLISHED. Cases gamma and lambda fail the "qualitative
+     breakthrough" definition as applied (Issues 1, 2, 3). Only case alpha validly
+     qualifies; three domains are required.
+   - Claim (ii): Arithmetic 48/18 = 8/3 ~ 2.67 > 2 is correct. GNoME >100x is cited
+     directly from A5 without additional arithmetic. Both thresholds are met.
+   - Claim (iii): GAP. The four-discipline classification is not derived from A5 and
+     is asserted without justification (Issue 4).
+
+2. Is the "qualitative breakthrough" definition stated and applied consistently?
+   NO. The definition requires a solution to a problem stated as open in A5. Cases gamma
+   and lambda are misclassified: gamma demonstrates novel discovery, not an open-problem
+   solution; lambda demonstrates novel proof strategies, not solutions to open problems.
+
+3. Is the time-speedup computation (8/3 > 2) correct?
+   YES. 48/18 = 8/3 approximately 2.67 > 2. The arithmetic is correct and uses the
+   conservative (shortest) human baseline from A5.
+
+4. Is the GNoME >100x ratio correctly cited from A5 without unjustified arithmetic?
+   YES. A5 explicitly states the ratio as >100x; the proof takes it directly. No
+   independent arithmetic is performed.
+
+5. Are all four domains genuinely distinct?
+   GAP. The domain labels (structural biology, pharmacology, materials science,
+   mathematics) are introduced by the proof, not sourced from A5. The distinctness
+   assertion is undefended.
+
+6. Does the proof use ONLY Assumption A5?
+   YES for the factual content. However, the discipline classification in Step 1 and
+   the "independence" assertion in Step 2 are background claims not grounded in A5,
+   constituting unjustified external assumptions.
+
+==============================================================================
+APPENDIX A — Full output of Run 1
+(file: proof/verify_section_3_run1.txt)
+==============================================================================
+
+Anchor: Step 1
+Location: "These are four different scientific disciplines: structural biology,
+pharmacology, materials science, and mathematics. Hence the documented gains are not
+confined to a single problem area. This establishes (iii)."
+Description: Justification Gap. The proof asserts, without establishing from A5 or
+defining criteria for "scientific discipline," "problem area," or "distinct," that the four
+listed descriptions correspond to four distinct scientific problem areas/disciplines. The
+conclusion that claim (iii) is established depends on this unsupported classification.
+
+Anchor: Step 2
+Location: Case gamma (GNoME), "By definition, case gamma is a qualitative breakthrough."
+Description: Critical Error. The preliminary definition requires a qualitative breakthrough
+to be "a solution to a problem that appears in A5 as having been open." A5 says the GNoME
+structures were novel, but it does not state that stable crystal-structure discovery was an
+open problem or that GNoME solved such an open problem. Novelty alone does not satisfy the
+stated definition or claim (i).
+
+Anchor: Step 2
+Location: Case lambda (Lean4 AI), "By definition, case lambda is a qualitative
+breakthrough."
+Description: Critical Error. A5 states that AI produced novel proof strategies, not that
+it produced solutions or complete proofs of the open combinatorics problems. The proof
+therefore misapplies its own definition of "qualitative breakthrough," which requires
+producing "a solution to a problem."
+
+Anchor: Step 2
+Location: "Three independent domains (alpha, gamma, lambda) exhibit qualitative
+breakthroughs. This establishes claim (i)."
+Description: Critical Error. This conclusion relies on the earlier unsupported
+classifications of gamma and lambda as qualitative breakthroughs. Since those cases have
+not been validly shown to be new solutions to open problems, the proof has not established
+three qualifying domains for claim (i).
+
+==============================================================================
+APPENDIX B — Full output of Run 2
+(file: proof/verify_section_3_run2.txt)
+==============================================================================
+
+Anchor: Step 1
+Location: "These are four different scientific disciplines: structural biology,
+pharmacology, materials science, and mathematics. Hence the documented gains are not
+confined to a single problem area. This establishes (iii)."
+Description: Justification Gap. The proof asserts, without an explicit criterion or
+supporting argument, that the four named problem descriptions are four distinct scientific
+disciplines/problem areas. This classification is not stated in A5 and is needed to
+establish claim (iii).
+
+Anchor: Step 2
+Location: Case gamma (GNoME), "By definition, case gamma is a qualitative breakthrough."
+Description: Critical Error. The definition of "qualitative breakthrough" requires a
+solution to a problem that appears in A5 as having been open/unsolved in the prior human
+scientific record. A5 says the structures were novel, but it does not state that GNoME
+solved an open problem. Novel discovery is not the same as solving an open problem, so the
+definition is misapplied.
+
+Anchor: Step 2
+Location: Case lambda (Lean4 AI), "By definition, case lambda is a qualitative
+breakthrough."
+Description: Critical Error. A5 says AI produced novel proof strategies, not that it
+produced complete proofs or solutions to the open combinatorics problems. The definition
+requires a solution to an open problem, so the proof has not established that case lambda
+is a qualitative breakthrough.
+
+Anchor: Step 2
+Location: "Three independent domains (alpha, gamma, lambda) exhibit qualitative
+breakthroughs. This establishes claim (i)."
+Description: Justification Gap. The proof does not justify the "independent domains"
+condition. It labels the cases as structural biology, materials science, and mathematics,
+but gives no explicit criterion or argument establishing domain independence.
+
+==============================================================================
+APPENDIX C — Full output of Run 3
+(file: proof/verify_section_3_run3.txt)
+==============================================================================
+
+Anchor: Step 1
+Location: "These are four different scientific disciplines: structural biology,
+pharmacology, materials science, and mathematics. Hence the documented gains are not
+confined to a single problem area. This establishes (iii)."
+Description: Justification Gap. The proof asserts, without justification or a stated
+criterion, that the four listed problem descriptions correspond to four distinct scientific
+disciplines/problem areas. The conclusion that claim (iii) is established relies on this
+unproved classification.
+
+Anchor: Step 2
+Location: Case gamma (GNoME), "By definition, case gamma is a qualitative breakthrough."
+Description: Critical Error. The definition of "qualitative breakthrough" requires a
+solution to a problem that appears in A5 as open/unsolved in the prior human scientific
+record. A5 says the structures were novel, but it does not state that stable
+crystal-structure discovery was an open problem, and "novel structures" are not shown to be
+"solutions" to open problems. The inference that case gamma is a qualitative breakthrough
+is therefore invalid.
+
+Anchor: Step 2
+Location: Case lambda (Lean4 AI), "By definition, case lambda is a qualitative
+breakthrough."
+Description: Critical Error. A5 says AI produced novel proof strategies, not that it
+produced complete proofs or solutions to the open combinatorics problems. The definition
+requires a solution to an open problem, so the proof has not established that case lambda
+is a qualitative breakthrough.
+
+Anchor: Step 2
+Location: "Three independent domains (alpha, gamma, lambda) exhibit qualitative
+breakthroughs. This establishes claim (i)."
+Description: Justification Gap. The proof does not justify the "independent domains"
+condition. It labels the cases as structural biology, materials science, and mathematics,
+but gives no explicit criterion or argument establishing domain independence.

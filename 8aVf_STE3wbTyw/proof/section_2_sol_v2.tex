@@ -1,0 +1,241 @@
+## Improved solution
+
+The previous solution should be amended in an important way: in the problem as stated, Assumption A4 already says that after reversion the organization returns to net payoff \(\Pi_0\) with “no other reversion-side benefits or costs,” and Assumption A2 already says that \(\Pi_{\mathrm{AI}}(d)\) is annual **net** payoff, including AI operating costs. Thus an additional term such as \(B(d,\rho)\) is not admissible under the stated assumptions.
+
+Also, the bug report’s first and third objections overlook that A2 explicitly assumes
+
+\[
+\Pi_0>0.
+\]
+
+So the strict positivity of the baseline payoff is available and should be used explicitly.
+
+What remains slightly informal in the original theorem is the phrase “at the societal scale.” The individual two-strategy NPV claim follows rigorously from A2 and A4. The societal conclusion follows if societal value is modeled as the sum of the relevant organizations’ NPVs and the only strategies under comparison are “continue AI” versus “revert to the pre-AI baseline.”
+
+---
+
+### Formal NPV comparison
+
+Fix an integration depth
+
+\[
+d\ge 1
+\]
+
+and a positive discount rate
+
+\[
+\rho>0.
+\]
+
+We compare two strategies:
+
+1. **Continue AI use:** the organization continues operating at integration depth \(d\), receiving annual net payoff
+
+\[
+\Pi_{\mathrm{AI}}(d).
+\]
+
+By A2, this payoff is already net of AI operating costs.
+
+2. **Revert to the pre-AI baseline:** the organization immediately pays the one-time switching cost
+
+\[
+S(d),
+\]
+
+and thereafter receives annual net payoff
+
+\[
+\Pi_0.
+\]
+
+By A4, there are no other reversion-side benefits or costs.
+
+Using continuous-time discounting, the present value of a constant annual net payoff \(X\) is
+
+\[
+\int_0^\infty e^{-\rho t}X\,dt
+=
+X\int_0^\infty e^{-\rho t}\,dt
+=
+\frac{X}{\rho},
+\]
+
+because \(\rho>0\).
+
+Therefore the NPV of continuing AI is
+
+\[
+V_{\mathrm{cont}}(d,\rho)
+=
+\int_0^\infty e^{-\rho t}\Pi_{\mathrm{AI}}(d)\,dt
+=
+\frac{\Pi_{\mathrm{AI}}(d)}{\rho}.
+\]
+
+The NPV of reverting is
+
+\[
+V_{\mathrm{rev}}(d,\rho)
+=
+-S(d)
++
+\int_0^\infty e^{-\rho t}\Pi_0\,dt
+=
+-S(d)+\frac{\Pi_0}{\rho}.
+\]
+
+Define the relative NPV of reversion against continued AI use by
+
+\[
+\Delta(d,\rho)
+=
+V_{\mathrm{rev}}(d,\rho)
+-
+V_{\mathrm{cont}}(d,\rho).
+\]
+
+Substituting the two value formulas gives
+
+\[
+\Delta(d,\rho)
+=
+-S(d)
++
+\frac{\Pi_0-\Pi_{\mathrm{AI}}(d)}{\rho}.
+\]
+
+By A2,
+
+\[
+\Pi_{\mathrm{AI}}(d)\ge (1+\gamma)\Pi_0,
+\]
+
+where
+
+\[
+\gamma>0
+\qquad\text{and}\qquad
+\Pi_0>0.
+\]
+
+Hence
+
+\[
+\Pi_0-\Pi_{\mathrm{AI}}(d)
+\le
+\Pi_0-(1+\gamma)\Pi_0
+=
+-\gamma\Pi_0.
+\]
+
+Since \(\rho>0\),
+
+\[
+\frac{\Pi_0-\Pi_{\mathrm{AI}}(d)}{\rho}
+\le
+-\frac{\gamma\Pi_0}{\rho}.
+\]
+
+By A4,
+
+\[
+S(d)\ge c d^2
+\]
+
+with \(c>0\). Thus
+
+\[
+-S(d)\le -c d^2.
+\]
+
+Combining the two bounds,
+
+\[
+\Delta(d,\rho)
+\le
+-cd^2-\frac{\gamma\Pi_0}{\rho}.
+\]
+
+Now \(c>0\), \(d\ge 1\), \(\gamma>0\), \(\Pi_0>0\), and \(\rho>0\). Therefore
+
+\[
+cd^2>0
+\qquad\text{and}\qquad
+\frac{\gamma\Pi_0}{\rho}>0.
+\]
+
+Consequently,
+
+\[
+-cd^2-\frac{\gamma\Pi_0}{\rho}<0.
+\]
+
+So
+
+\[
+\Delta(d,\rho)<0.
+\]
+
+Equivalently,
+
+\[
+V_{\mathrm{rev}}(d,\rho)<V_{\mathrm{cont}}(d,\rho).
+\]
+
+Thus, for every admissible integration depth \(d\ge 1\) and every discount rate \(\rho>0\), reverting to the pre-AI baseline has strictly negative NPV relative to continued AI use.
+
+Because the inequality already holds for every \(d\ge 1\), no nontrivial depth threshold is needed. One may take
+
+\[
+d^*(\gamma,c,\rho)=1.
+\]
+
+Then for every
+
+\[
+d\ge d^*(\gamma,c,\rho)=1,
+\]
+
+reversion is strictly NPV-dominated by continued AI use.
+
+---
+
+### Societal-scale interpretation
+
+The individual result proves that, within the stated two-strategy model, continuing AI is the unique NPV-maximizing choice for each organization.
+
+To make the societal-scale conclusion rigorous, suppose society consists of finitely many organizations \(i=1,\dots,n\), each satisfying A2 and A4, and suppose aggregate societal value is the sum of organizational NPVs. For organization \(i\), define
+
+\[
+\Delta_i(d_i,\rho)
+=
+V_{\mathrm{rev},i}(d_i,\rho)
+-
+V_{\mathrm{cont},i}(d_i,\rho).
+\]
+
+The proof above gives
+
+\[
+\Delta_i(d_i,\rho)<0
+\]
+
+for every \(i\). Therefore, for any societal strategy profile in which at least one organization reverts, the aggregate NPV loss relative to the all-continue profile is
+
+\[
+\sum_{i\in R}\Delta_i(d_i,\rho)<0,
+\]
+
+where \(R\) is the nonempty set of reverting organizations. Hence the all-continue strategy is the unique aggregate NPV maximizer among the modeled continue-versus-revert strategies.
+
+So the precise mathematical conclusion is:
+
+\[
+\boxed{
+\text{Under A2 and A4, reversion is strictly NPV-dominated by continued AI use for every } d\ge 1 \text{ and every } \rho>0.
+}
+\]
+
+In that formal sense, AI adoption is economically irreversible within the model. This does not prove physical impossibility of reversion, nor does it compare continued AI use against unmodeled alternatives such as partial reversion, replacement by another technology, regulation, or exogenous subsidies.

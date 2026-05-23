@@ -1,0 +1,19 @@
+Anchor: Step 1  
+Location: “The maximum amount of compute purchasable at time \(t\) is \[ C_B(t)=\frac{B}{k(t)} \]”  
+Description: Justification Gap: \(A1\) states that hardware cost per FLOP declines, but the solution does not explicitly justify the total-cost model “cost of \(C\) FLOPs equals \(k(t)C\),” nor does it rule out other costs or constraints. The division by \(k(t)\) also requires \(k(t)>0\), which is not explicitly established.
+
+Anchor: Step 1  
+Location: “the best loss achievable within budget \(B\) at time \(t\) is \[ L_B(t)=\left(\frac{C_0}{C_B(t)}\right)^\alpha \]”  
+Description: Justification Gap: \(A1\) gives a scaling relation for large neural-network models trained with compute \(C\); it does not establish that this scaling-law family is the best AI system purchasable within budget \(B\), that the budget always places the system in the “large model” regime, or that no other AI system achieves a different loss. The equality between the scaling-law loss and the “best loss achievable” is therefore not justified.
+
+Anchor: Step 3  
+Location: “A natural loss-based deficit of the pre-AI system relative to the AI system is \[ D_L(t)=L_{\mathrm{pre}}-L_B(t). \] … So, under the extra assumption that the pre-AI baseline has constant loss \(L_{\mathrm{pre}}\), the AI system’s loss advantage grows over time.”  
+Description: Justification Gap: The derivative \(D_L'(t)>0\) shows only that \(D_L(t)\) increases. It does not establish that \(D_L(t)>0\), i.e. that the AI system actually has a loss advantage over the pre-AI baseline. That would require an additional condition such as \(L_{\mathrm{pre}}>L_B(t)\).
+
+Anchor: Step 3  
+Location: “If instead one defines capability by inverse loss … \[D_\kappa(t)=\kappa_B(t)-\kappa_{\mathrm{pre}}\] … So with this particular definition, the capability deficit grows at an accelerating rate.”  
+Description: Justification Gap: The computation shows \(D_\kappa'(t)>0\) and \(D_\kappa''(t)>0\), but it does not establish that \(D_\kappa(t)>0\). Without assuming \(\kappa_B(t)>\kappa_{\mathrm{pre}}\), the quantity need not be a “deficit” of the pre-AI system relative to AI.
+
+Anchor: Step 5  
+Location: “Finally, if one adds the economic assumption that, at equal cost, higher \(\kappa\) strictly increases organizational payoff, then whenever \(\kappa_B(t)>\kappa_{\mathrm{pre}}\), the pre-AI baseline is economically dominated by AI adoption at time \(t\).”  
+Description: Justification Gap: The stated economic assumption is not enough to prove economic dominance as previously defined. The solution does not establish that the AI and pre-AI strategies actually have equal cost, that all other payoff-relevant factors are equal, or that the payoff inequality holds in all relevant states with strict inequality in at least one.

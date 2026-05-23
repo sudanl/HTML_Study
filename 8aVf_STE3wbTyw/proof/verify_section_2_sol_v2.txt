@@ -1,0 +1,15 @@
+Anchor: global  
+Location: “The societal conclusion follows if societal value is modeled as the sum of the relevant organizations’ NPVs and the only strategies under comparison are ‘continue AI’ versus ‘revert to the pre-AI baseline.’”  
+Description: Critical Error: The theorem claims the societal-scale conclusion follows under Assumptions A2 and A4 alone, but the solution introduces additional assumptions about additive societal value and a restricted two-strategy choice set. These assumptions are not part of A2 or A4, so the claimed societal-scale result is not proved from the stated hypotheses.
+
+Anchor: global  
+Location: “To make the societal-scale conclusion rigorous, suppose society consists of finitely many organizations \(i=1,\dots,n\), each satisfying A2 and A4, and suppose aggregate societal value is the sum of organizational NPVs.”  
+Description: Critical Error: This proves only a conditional result under a newly imposed finite-additive aggregation model. The original theorem does not assume society is a finite collection of organizations, does not define societal value as a sum of organizational NPVs, and does not exclude interdependence or externalities between organizations. Therefore the proof does not establish the theorem’s societal-scale claim.
+
+Anchor: global  
+Location: “Hence the all-continue strategy is the unique aggregate NPV maximizer among the modeled continue-versus-revert strategies.”  
+Description: Justification Gap: The theorem concludes that continued AI adoption is the unique economically rational strategy, but the solution proves uniqueness only among the modeled binary choices “continue AI” versus “revert to the pre-AI baseline.” It explicitly does not rule out other economically rational alternatives such as partial reversion, changing integration depth, replacement technologies, regulation, or subsidies. Thus the stated uniqueness claim is not fully justified.
+
+Anchor: global  
+Location: “In that formal sense, AI adoption is economically irreversible within the model. This does not prove physical impossibility of reversion, nor does it compare continued AI use against unmodeled alternatives such as partial reversion, replacement by another technology, regulation, or exogenous subsidies.”  
+Description: Justification Gap: The conclusion “AI adoption is economically irreversible” is weakened to irreversibility only within a restricted model. The original theorem states irreversibility as a consequence of A2 and A4, but the solution acknowledges that broader forms of reversion or alternative strategies are not analyzed. Therefore the full irreversibility conclusion is not established.

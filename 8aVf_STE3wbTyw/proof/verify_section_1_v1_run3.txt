@@ -1,0 +1,11 @@
+Anchor: Step 1  
+Location: “Fix a budget \(B>0\). The maximum amount of compute purchasable at time \(t\) is \(\ C_B(t)=\frac{B}{k(t)}\). … the best loss achievable within budget \(B\) at time \(t\) is \(\ L_B(t)=\left(\frac{C_0}{C_B(t)}\right)^\alpha\).”  
+Description: Justification Gap. Assumption A1 gives a cost-per-FLOP decline and a loss-vs-compute law for large neural-network models, but it does not explicitly establish that a budget can be converted entirely and continuously into training FLOPs, that no other costs or constraints matter, that \(C_B(t)\) lies in the “large model” scaling regime, or that the globally best purchasable AI system within budget \(B\) is exactly obtained by training at compute \(C_B(t)\).
+
+Anchor: Step 3  
+Location: “So, under the extra assumption that the pre-AI baseline has constant loss \(L_{\mathrm{pre}}\), the AI system’s loss advantage grows over time.”  
+Description: Justification Gap. The computation \(D_L'(t)>0\) only shows that \(L_{\mathrm{pre}}-L_B(t)\) increases. To call this an “AI system’s loss advantage,” the solution must also establish \(L_{\mathrm{pre}}>L_B(t)\) on the relevant time interval. That condition is not assumed or proved.
+
+Anchor: Step 5  
+Location: “Finally, if one adds the economic assumption that, at equal cost, higher \(\kappa\) strictly increases organizational payoff, then whenever \(\kappa_B(t)>\kappa_{\mathrm{pre}}\), the pre-AI baseline is economically dominated by AI adoption at time \(t\).”  
+Description: Justification Gap. The solution’s own earlier dominance definition requires payoff weakly higher in all relevant states and strictly higher in at least one. The stated added assumption only gives a capability-payoff monotonicity condition at equal cost; it does not specify the relevant state space, all non-capability costs or constraints, or verify the required statewise dominance condition.

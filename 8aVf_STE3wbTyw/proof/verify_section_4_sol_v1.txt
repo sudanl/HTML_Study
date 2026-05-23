@@ -1,0 +1,27 @@
+Anchor: global  
+Location: “The strongest defensible conclusion is a weaker one” and “What follows rigorously is only this:”  
+Description: Justification Gap — The solution does not justify the maximality claim. Showing that the particular claims \(C4(ii)\), \(C4(iii)\), and \(C4(iv)\) do not follow does not establish that the stated weakened conclusion is the strongest or only conclusion derivable from \(A3\) and \(A4\).
+
+Anchor: global  
+Location: “Therefore, for any listed system \(X \in \mathcal{S}\) whose integration depth is \(d_X \ge d_0\), one may conclude \[ S_X(d_X) \ge c d_X^2. \]”  
+Description: Justification Gap — \(S_X\) is introduced without definition. Assumption \(A4\) states a switching-cost function \(S(d)\), but the solution does not explicitly define the relationship between \(S\) and the system-specific notation \(S_X\), nor does it justify that the same constants \(c,d_0\) apply uniformly to all such system-specific costs.
+
+Anchor: global  
+Location: “The middle implication, \[ \text{greater integration depth} \Rightarrow \text{higher switching cost}, \] is partially supported by \(A4\), though only as a lower-bound statement: \[ S(d) \ge c d^2 \]”  
+Description: Justification Gap — An asymptotic lower bound \(S(d)=\Omega(d^2)\) does not by itself establish that actual switching cost is monotone increasing in \(d\). A function can satisfy the lower bound while decreasing between particular depths. The solution does not state or justify any monotonicity assumption.
+
+Anchor: global  
+Location: “For each \(X \in \mathcal{S}\), define integration depth \[ d_X=100. \] Define switching cost by \[ S_X(d)=d^2. \] Then \[ S_X(d)=\Omega(d^2), \] so \(A4\) is satisfied.”  
+Description: Justification Gap — This checks only the \(\Omega(d^2)\) part of \(A4\). Assumption \(A4\) also states that for operationally critical systems, deep integration \((d \gg 1)\) is the norm. The solution does not explicitly justify that \(d_X=100\) satisfies the undefined condition \(d\gg1\), nor that assigning this depth to all four systems satisfies the “norm” clause.
+
+Anchor: global  
+Location: “This cost is not prohibitive relative to \(B\) under any ordinary meaning of ‘prohibitive.’”  
+Description: Justification Gap — The term “prohibitive” is not formally defined, and appealing to “ordinary meaning” is not a rigorous justification. The numerical ratio \(10^{-8}\) suggests smallness, but without a specified threshold or definition, the conclusion that the cost is not prohibitive is not formally established.
+
+Anchor: global  
+Location: “Thus switching cost is not prohibitive relative to annual budget. This falsifies \(C4(ii)\).”  
+Description: Justification Gap — Because “prohibitive” and “practically infeasible” are not formally defined, the countermodel does not rigorously falsify \(C4(ii)\). The solution shows that \(A3\) and \(A4\) do not supply the needed budget comparison, but the stronger claim that the constructed model falsifies \(C4(ii)\) requires a formal interpretation of those qualitative terms.
+
+Anchor: global  
+Location: “Finally, suppose each system can remove AI by paying the switching cost \[ 10^4. \] Since \[ 10^4 \ll 10^{12}, \] removal is feasible in this model. Hence the systems are not irrevocably AI-dependent. This falsifies \(C4(iv)\).”  
+Description: Justification Gap — Feasibility is asserted from the cost being much smaller than the budget, but no formal criterion for feasibility is supplied. The argument also assumes that paying the switching cost is sufficient for successful removal, and “irrevocably AI-dependent” is not formally defined. Therefore the claimed falsification of \(C4(iv)\) is not fully justified.

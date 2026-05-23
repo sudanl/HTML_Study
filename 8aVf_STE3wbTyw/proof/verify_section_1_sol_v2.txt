@@ -1,0 +1,23 @@
+Anchor: global  
+Location: “The proof below uses the strongest formalization justified by \(A1\): the ‘best AI system’ means the best system **within the scaling-law model class described by \(A1\)**. If ‘best’ instead means globally best over every possible architecture or future paradigm, \(A1\) alone does not rule out unmentioned alternatives, so the original theorem is not derivable without an added optimality assumption.”  
+Description: Critical Error: The solution changes the theorem being proved. The stated theorem does not restrict “best AI system” to the scaling-law model class, and \(A1\) does not add an optimality assumption excluding other architectures or paradigms. Proving the restricted model-class claim does not prove the theorem as stated.
+
+Anchor: global  
+Location: “We assume the scaling-law formula in \(A1\) applies to the budget-relevant compute values \(C_B(t)\) for \(t\in H\). If the phrase ‘large neural-network models’ is interpreted as a restricted domain condition, then the proof applies on the subinterval where \(C_B(t)\) lies in that domain.”  
+Description: Critical Error: This introduces an extra assumption not established by \(A1\). The theorem requires conclusions over the full 10-year horizon \(H\), but the solution only proves them where the scaling law applies to \(C_B(t)\). If that domain condition fails anywhere on \(H\), the proof does not establish the theorem.
+
+Anchor: Step 2  
+Location: “So the model-AI loss strictly decreases over time. … This proves claim \((i)\) under the formal A1-model interpretation of ‘best AI system.’”  
+Description: Justification Gap: The calculation proves only that the defined quantity \(L_B(t)=L(C_B(t))\) decreases. It does not explicitly justify that \(L(C_B(t))\) is the loss of the “best AI system purchasable within \(B\)” at each time, or that using the maximum purchasable compute is optimal among all purchasable systems.
+
+Anchor: Step 3  
+Location: “Therefore the rate of capability gain, \(\kappa_B'(t)\), is strictly increasing, hence non-decreasing, over \(H\). This proves claim \((ii)\) for the capability index \(\kappa=\frac{1}{L}\).”  
+Description: Critical Error: \(A1\) states only that lower loss corresponds to higher capability/payoff; it does not justify inverse loss as the cardinal capability scale. Claims about rates and acceleration depend on the chosen scale, so proving acceleration for \(\kappa=1/L\) does not establish claim \((ii)\) from \(A1\) alone.
+
+Anchor: Step 3  
+Location: “It also gives a precise sense in which the growth is self-reinforcing: \(\kappa_B'(t)=\beta \kappa_B(t)\). The instantaneous capability-gain rate is proportional to the current capability level.”  
+Description: Justification Gap: The solution never formally defines “self-reinforcing.” The equation \(\kappa_B'(t)=\beta\kappa_B(t)\) shows proportional growth under the chosen capability index, but the proof does not justify why that is sufficient to establish the theorem’s self-reinforcement claim.
+
+Anchor: Step 5  
+Location: “Thus, under the all-else-equal payoff model explicitly supplied by \(A1\), reverting to the pre-AI baseline is economically dominated.”  
+Description: Justification Gap: The proof establishes dominance only under the solution’s stipulated pointwise, all-else-equal payoff model. It does not justify that this model captures the theorem’s broader claim about “any organization” or “reversion” as an economically dominated strategy over the planning horizon.

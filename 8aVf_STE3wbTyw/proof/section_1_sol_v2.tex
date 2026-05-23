@@ -1,0 +1,403 @@
+## Improved solution
+
+No external theorem is needed below; the scaling law and hardware-cost law are used only as hypotheses from Assumption \(A1\).
+
+There is one important logical point: \(A1\) supports a rigorous proof only after the ambiguous phrases “best AI system,” “capability,” “capability deficit,” and “economically dominated” are formalized. The proof below uses the strongest formalization justified by \(A1\): the “best AI system” means the best system **within the scaling-law model class described by \(A1\)**. If “best” instead means globally best over every possible architecture or future paradigm, \(A1\) alone does not rule out unmentioned alternatives, so the original theorem is not derivable without an added optimality assumption.
+
+Let the planning horizon be
+
+\[
+H=[t_0,t_0+10].
+\]
+
+We assume the scaling-law formula in \(A1\) applies to the budget-relevant compute values \(C_B(t)\) for \(t\in H\). If the phrase “large neural-network models” is interpreted as a restricted domain condition, then the proof applies on the subinterval where \(C_B(t)\) lies in that domain.
+
+---
+
+### Formal definitions
+
+For a fixed budget \(B>0\), define the model-AI loss at time \(t\) by
+
+\[
+L_B(t)=L(C_B(t)).
+\]
+
+Define the effective capability index by
+
+\[
+\kappa_B(t)=\frac{1}{L_B(t)}.
+\]
+
+This is a legitimate higher-is-better capability index because \(L_B(t)>0\), and lower loss corresponds exactly to higher \(\kappa_B(t)\).
+
+The fixed pre-AI baseline has loss \(L_{\mathrm{base}}\). Its corresponding capability is
+
+\[
+\kappa_{\mathrm{base}}=\frac{1}{L_{\mathrm{base}}}.
+\]
+
+Define the capability deficit of the pre-AI baseline relative to AI-adopting peers by
+
+\[
+D(t)=\kappa_B(t)-\kappa_{\mathrm{base}}.
+\]
+
+Thus \(D(t)>0\) means the AI system has higher capability than the pre-AI baseline.
+
+For economic dominance, let \(u:(0,\infty)\to \mathbb{R}\) be the strictly decreasing payoff function of loss from \(A1\). In the all-else-equal comparison required by \(A1\), define the payoff of strategy \(s\) at time \(t\) by
+
+\[
+\Pi(s,t)=u(L_s(t)).
+\]
+
+The AI-adoption strategy \(s_{\mathrm{AI}}\) has loss \(L_B(t)\), while the pre-AI strategy \(s_{\mathrm{pre}}\) has loss \(L_{\mathrm{base}}\). We say \(s_{\mathrm{AI}}\) economically dominates \(s_{\mathrm{pre}}\) on \(H\) if
+
+\[
+\Pi(s_{\mathrm{AI}},t)\geq \Pi(s_{\mathrm{pre}},t)
+\]
+
+for every \(t\in H\), with strict inequality for at least one \(t\in H\).
+
+---
+
+## Step 1: Budget-to-compute conversion
+
+By \(A1\),
+
+\[
+k(t)=k_0 r^{-(t-t_0)},
+\]
+
+where \(k_0>0\) and \(r>1\). Hence
+
+\[
+k(t)>0
+\]
+
+for every \(t\). Therefore division by \(k(t)\) is valid.
+
+Assumption \(A1\) also explicitly states the compute-budget relation: total cost equals cost per FLOP times FLOPs, with no other significant cost components. Thus, for compute \(C\), the cost is
+
+\[
+k(t)C.
+\]
+
+The largest amount of compute purchasable with budget \(B\) is therefore the unique \(C_B(t)\) satisfying
+
+\[
+k(t)C_B(t)=B.
+\]
+
+Hence
+
+\[
+C_B(t)=\frac{B}{k(t)}
+      =\frac{B}{k_0 r^{-(t-t_0)}}
+      =\frac{B}{k_0}r^{t-t_0}.
+\]
+
+Since \(r>1\), \(C_B(t)\) strictly increases with \(t\).
+
+---
+
+## Step 2: Loss achieved by the scaling-law AI system
+
+The scaling law gives
+
+\[
+L(C)=\left(\frac{C_0}{C}\right)^\alpha,
+\]
+
+with \(C_0>0\) and \(\alpha>0\). Therefore
+
+\[
+L_B(t)
+=
+L(C_B(t))
+=
+\left(\frac{C_0}{C_B(t)}\right)^\alpha.
+\]
+
+Substituting the expression for \(C_B(t)\),
+
+\[
+L_B(t)
+=
+\left(\frac{C_0}{(B/k_0)r^{t-t_0}}\right)^\alpha
+=
+\left(\frac{C_0k_0}{B}\right)^\alpha r^{-\alpha(t-t_0)}.
+\]
+
+Let
+
+\[
+A=\left(\frac{C_0k_0}{B}\right)^\alpha>0,
+\qquad
+\beta=\alpha\log r>0.
+\]
+
+Then
+
+\[
+L_B(t)=Ae^{-\beta(t-t_0)}.
+\]
+
+Thus, for \(t_2>t_1\),
+
+\[
+\frac{L_B(t_2)}{L_B(t_1)}
+=
+r^{-\alpha(t_2-t_1)}
+<1.
+\]
+
+Therefore
+
+\[
+L_B(t_2)<L_B(t_1).
+\]
+
+So the model-AI loss strictly decreases over time.
+
+Equivalently, since capability is defined as inverse loss,
+
+\[
+\kappa_B(t)=\frac{1}{L_B(t)},
+\]
+
+we have
+
+\[
+\kappa_B(t_2)>\kappa_B(t_1)
+\]
+
+whenever \(t_2>t_1\). This proves claim \((i)\) under the formal A1-model interpretation of “best AI system.”
+
+---
+
+## Step 3: Accelerating capability growth
+
+Using the expression for \(L_B(t)\),
+
+\[
+\kappa_B(t)
+=
+\frac{1}{L_B(t)}
+=
+A^{-1}e^{\beta(t-t_0)}.
+\]
+
+Differentiating,
+
+\[
+\kappa_B'(t)
+=
+\beta A^{-1}e^{\beta(t-t_0)}
+=
+\beta \kappa_B(t).
+\]
+
+Since \(\beta>0\) and \(\kappa_B(t)>0\),
+
+\[
+\kappa_B'(t)>0.
+\]
+
+Differentiating again,
+
+\[
+\kappa_B''(t)
+=
+\beta \kappa_B'(t)
+=
+\beta^2\kappa_B(t).
+\]
+
+Again, since \(\beta>0\) and \(\kappa_B(t)>0\),
+
+\[
+\kappa_B''(t)>0.
+\]
+
+Therefore the rate of capability gain,
+
+\[
+\kappa_B'(t),
+\]
+
+is strictly increasing, hence non-decreasing, over \(H\). This proves claim \((ii)\) for the capability index
+
+\[
+\kappa=\frac{1}{L}.
+\]
+
+It also gives a precise sense in which the growth is self-reinforcing:
+
+\[
+\kappa_B'(t)=\beta \kappa_B(t).
+\]
+
+The instantaneous capability-gain rate is proportional to the current capability level.
+
+---
+
+## Step 4: Positivity and growth of the capability deficit
+
+By \(A1\), at the reference time \(t_0\),
+
+\[
+L_B(t_0)<L_{\mathrm{base}}.
+\]
+
+For \(t\geq t_0\),
+
+\[
+L_B(t)
+=
+L_B(t_0)r^{-\alpha(t-t_0)}.
+\]
+
+Since \(r>1\), \(\alpha>0\), and \(t-t_0\geq 0\),
+
+\[
+r^{-\alpha(t-t_0)}\leq 1.
+\]
+
+Therefore
+
+\[
+L_B(t)\leq L_B(t_0)<L_{\mathrm{base}}.
+\]
+
+Hence, for every \(t\in H\),
+
+\[
+L_B(t)<L_{\mathrm{base}}.
+\]
+
+Because both losses are positive, taking reciprocals reverses the inequality:
+
+\[
+\frac{1}{L_B(t)}>\frac{1}{L_{\mathrm{base}}}.
+\]
+
+Thus
+
+\[
+\kappa_B(t)>\kappa_{\mathrm{base}}.
+\]
+
+So the capability deficit
+
+\[
+D(t)=\kappa_B(t)-\kappa_{\mathrm{base}}
+\]
+
+is genuinely positive:
+
+\[
+D(t)>0.
+\]
+
+Moreover,
+
+\[
+D'(t)=\kappa_B'(t)>0,
+\]
+
+and
+
+\[
+D''(t)=\kappa_B''(t)>0.
+\]
+
+Therefore the pre-AI baseline suffers a positive, growing, and accelerating capability deficit relative to AI-adopting peers.
+
+This fixes the earlier sign issue: the deficit is not merely increasing; it is positive throughout the horizon because \(A1\) gives an initial AI advantage and the AI loss only decreases thereafter.
+
+---
+
+## Step 5: Economic dominance under the all-else-equal payoff model
+
+The AI strategy has loss
+
+\[
+L_{s_{\mathrm{AI}}}(t)=L_B(t),
+\]
+
+while the pre-AI strategy has fixed loss
+
+\[
+L_{s_{\mathrm{pre}}}(t)=L_{\mathrm{base}}.
+\]
+
+From Step 4,
+
+\[
+L_B(t)<L_{\mathrm{base}}
+\]
+
+for every \(t\in H\).
+
+Since \(u\) is strictly decreasing in loss,
+
+\[
+u(L_B(t))>u(L_{\mathrm{base}})
+\]
+
+for every \(t\in H\). Therefore
+
+\[
+\Pi(s_{\mathrm{AI}},t)>\Pi(s_{\mathrm{pre}},t)
+\]
+
+for every \(t\in H\).
+
+In particular,
+
+\[
+\Pi(s_{\mathrm{AI}},t)\geq \Pi(s_{\mathrm{pre}},t)
+\]
+
+for all \(t\in H\), with strict inequality for every \(t\in H\). Hence \(s_{\mathrm{AI}}\) economically dominates \(s_{\mathrm{pre}}\) on the planning horizon.
+
+Thus, under the all-else-equal payoff model explicitly supplied by \(A1\), reverting to the pre-AI baseline is economically dominated.
+
+---
+
+## What this proves, and what it does not prove
+
+The rigorous conclusion is:
+
+\[
+L_B(t)=
+\left(\frac{C_0k_0}{B}\right)^\alpha r^{-\alpha(t-t_0)},
+\]
+
+so fixed-budget AI loss strictly decreases over time, while inverse-loss capability
+
+\[
+\kappa_B(t)=\frac{1}{L_B(t)}
+\]
+
+strictly increases and accelerates:
+
+\[
+\kappa_B'(t)>0,
+\qquad
+\kappa_B''(t)>0.
+\]
+
+The pre-AI baseline has a positive and growing capability deficit:
+
+\[
+D(t)=\kappa_B(t)-\kappa_{\mathrm{base}}>0,
+\qquad
+D'(t)>0,
+\qquad
+D''(t)>0.
+\]
+
+Finally, in the all-else-equal payoff model where payoff is strictly decreasing in loss, AI adoption economically dominates reverting to the pre-AI baseline.
+
+However, the unqualified theorem would still be too strong if “best AI system” means globally best over every possible architecture, or if economic payoff includes unmodeled strategy-specific costs, risks, legal constraints, or transition costs. Those are not ruled out by \(A1\). Under the formal A1-model interpretation above, the claims are proved.

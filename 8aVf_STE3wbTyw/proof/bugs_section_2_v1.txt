@@ -1,0 +1,87 @@
+Bug Report: proof/section_2_sol_v1.tex
+Problem: proof/section_2_economic_lockin.tex
+Verification mode: standard
+Verdict: ISSUES_FOUND
+
+====================================================================
+ISSUES (2 total)
+====================================================================
+
+ISSUE 1 — CRITICAL ERROR
+Location: Theorem conclusion — "Then for every d >= 1 and every rho > 0,
+  reverting has strictly negative NPV relative to continuing AI. Hence,
+  within this two-strategy model, continuing AI is the unique NPV-
+  maximizing strategy."
+Description:
+  The corrected theorem's listed assumptions do not include Pi_0 >= 0,
+  yet the claimed NPV dominance can fail when Pi_0 < 0. Under A2 one
+  may have Pi_AI(d) = (1 + gamma) * Pi_0, so the productivity-stream
+  term (Pi_0 - Pi_AI(d)) / rho = -gamma * Pi_0 / rho is strictly
+  positive whenever Pi_0 < 0, and can outweigh the switching cost c*d^2.
+  The theorem as stated is therefore not valid from its declared
+  assumptions.
+
+ISSUE 2 — JUSTIFICATION GAP
+Location: Algebraic step — "Since c > 0, d >= 1, gamma > 0, rho > 0,
+  and Pi_0 >= 0, we have  -c*d^2 - gamma*Pi_0 / rho < 0."
+Description:
+  The proof invokes Pi_0 >= 0 as a fact, but this condition appears in
+  neither A2, A4, nor any additional assumption listed in the corrected
+  theorem. Its source is entirely unjustified. This is a direct
+  consequence of Issue 1: the assumption is silently smuggled in to
+  make the inequality hold, but it is not part of the theorem's
+  hypothesis set.
+
+====================================================================
+ADVERSARIAL CHECKLIST (per task specification)
+====================================================================
+
+1. NPV reversion comparison established formally?
+   NO — the comparison collapses when Pi_0 < 0 (see Issue 1).
+
+2. d* derived explicitly in terms of gamma, c, rho?
+   PARTIAL — the proof defines d* via the NPV expression but the
+   derivation inherits the ungrounded Pi_0 >= 0 assumption (Issue 2),
+   making the claimed threshold formally unsupported.
+
+3. Claim "NPV(revert) < 0 for all rho > 0" proved or just asserted?
+   ASSERTED — the inequality at the core of the proof relies on an
+   unjustified sign constraint on Pi_0 (Issue 2); no sub-argument
+   establishes it from A2/A4 alone.
+
+4. Discount-rate mechanics (perpetual productivity stream) correct?
+   The present-value formula 1/rho for a perpetual stream is used
+   consistently and is not itself flagged, but its sign depends on
+   Pi_0's sign, which is unresolved.
+
+5. Proof uses ONLY A2 and A4?
+   NO — it relies on Pi_0 >= 0, which is an undeclared additional
+   assumption not drawn from A2 or A4.
+
+6. All inequalities and algebraic steps correct?
+   NO — the final key inequality -c*d^2 - gamma*Pi_0/rho < 0 is only
+   valid under the unjustified constraint Pi_0 >= 0 (Issue 2).
+
+====================================================================
+APPENDIX: Full verifier output (verify_section_2_sol_v1.txt)
+====================================================================
+
+Anchor: global
+Location: "Then for every \(d\ge 1\) and every \(\rho>0\), reverting has
+  strictly negative NPV relative to continuing AI. Hence, within this
+  two-strategy model, continuing AI is the unique NPV-maximizing
+  strategy."
+Description: Critical Error: The corrected theorem's listed assumptions
+  do not include \(\Pi_0\ge 0\), but the claimed dominance can fail if
+  \(\Pi_0<0\). Under A2, one may have \(\Pi_{\mathrm{AI}}(d)=(1+\gamma)
+  \Pi_0\), in which case \((\Pi_0-\Pi_{\mathrm{AI}}(d))/\rho=-\gamma
+  \Pi_0/\rho\) is positive when \(\Pi_0<0\) and can outweigh the
+  switching cost. Thus the corrected theorem is not valid from its
+  stated assumptions.
+
+Anchor: global
+Location: "Since \(c>0\), \(d\ge 1\), \(\gamma>0\), \(\rho>0\), and
+  \(\Pi_0\ge 0\), we have \[ -cd^2-\frac{\gamma \Pi_0}{\rho}<0. \]"
+Description: Justification Gap: The proof invokes \(\Pi_0\ge 0\), but
+  neither A2, A4, nor the corrected theorem's additional assumptions
+  explicitly establish this condition.

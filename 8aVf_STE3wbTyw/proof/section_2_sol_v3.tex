@@ -1,0 +1,362 @@
+The bug report is essentially correct: **A2 and A4 alone prove a strict NPV dominance result for the binary comparison “continue AI at fixed depth \(d\)” versus “immediately revert to the pre-AI baseline.”** They do **not** by themselves prove the broader societal-scale uniqueness or irreversibility claim, because no societal welfare functional, aggregation rule, externality model, or full strategy set is specified.
+
+Below is the strongest theorem that follows from A2 and A4 alone.
+
+---
+
+## Corrected theorem
+
+For any organization satisfying A2 and A4, any integration depth \(d \ge 1\), and any discount rate \(\rho>0\), immediate reversion to the pre-AI baseline is strictly NPV-dominated by continued AI use at depth \(d\). Equivalently,
+
+\[
+V_{\mathrm{rev}}(d,\rho)-V_{\mathrm{cont}}(d,\rho)<0.
+\]
+
+Thus, within the binary choice set
+
+\[
+\{\text{continue AI at depth }d,\ \text{revert immediately to the pre-AI baseline}\},
+\]
+
+continued AI use is the unique NPV-maximizing strategy.
+
+Because the inequality holds for every \(d\ge 1\), one may take
+
+\[
+d^* = 1
+\]
+
+for statements of the form \(d\ge d^*\). If the theorem insists on the strict wording \(d>d^*\), then any constant \(d^*\in(0,1)\), for example
+
+\[
+d^*=\frac12,
+\]
+
+works on the domain \(d\ge 1\). The threshold is therefore vacuous: no nontrivial depth threshold is needed under A2 and A4.
+
+---
+
+## Proof
+
+Fix an organization, an integration depth
+
+\[
+d\ge 1,
+\]
+
+and a positive discount rate
+
+\[
+\rho>0.
+\]
+
+We compare two strategies.
+
+### Strategy 1: Continue AI use
+
+The organization continues operating at integration depth \(d\), receiving annual net payoff
+
+\[
+\Pi_{\mathrm{AI}}(d).
+\]
+
+By A2, this payoff is already net of AI operating costs.
+
+Using continuous-time discounting, the present value of a constant annual payoff \(X\) is
+
+\[
+\int_0^\infty e^{-\rho t}X\,dt
+=
+X\int_0^\infty e^{-\rho t}\,dt
+=
+\frac{X}{\rho},
+\]
+
+since \(\rho>0\). Therefore
+
+\[
+V_{\mathrm{cont}}(d,\rho)
+=
+\frac{\Pi_{\mathrm{AI}}(d)}{\rho}.
+\]
+
+### Strategy 2: Revert immediately to the pre-AI baseline
+
+By A4, immediate reversion requires paying the one-time switching cost
+
+\[
+S(d),
+\]
+
+and thereafter the organization receives annual net payoff
+
+\[
+\Pi_0.
+\]
+
+A4 also states that there are no other reversion-side benefits or costs. Hence
+
+\[
+V_{\mathrm{rev}}(d,\rho)
+=
+-S(d)+\frac{\Pi_0}{\rho}.
+\]
+
+Define the incremental NPV of reversion relative to continuation by
+
+\[
+\Delta(d,\rho)
+=
+V_{\mathrm{rev}}(d,\rho)-V_{\mathrm{cont}}(d,\rho).
+\]
+
+Substituting the two value formulas gives
+
+\[
+\Delta(d,\rho)
+=
+-S(d)+\frac{\Pi_0-\Pi_{\mathrm{AI}}(d)}{\rho}.
+\]
+
+By A2,
+
+\[
+\Pi_{\mathrm{AI}}(d)\ge (1+\gamma)\Pi_0,
+\]
+
+where
+
+\[
+\gamma>0
+\qquad\text{and}\qquad
+\Pi_0>0.
+\]
+
+Therefore
+
+\[
+\Pi_0-\Pi_{\mathrm{AI}}(d)
+\le
+\Pi_0-(1+\gamma)\Pi_0
+=
+-\gamma\Pi_0.
+\]
+
+Since \(\rho>0\),
+
+\[
+\frac{\Pi_0-\Pi_{\mathrm{AI}}(d)}{\rho}
+\le
+-\frac{\gamma\Pi_0}{\rho}.
+\]
+
+By A4,
+
+\[
+S(d)\ge c d^2
+\]
+
+for some \(c>0\). Hence
+
+\[
+-S(d)\le -c d^2.
+\]
+
+Combining the two bounds,
+
+\[
+\Delta(d,\rho)
+\le
+-cd^2-\frac{\gamma\Pi_0}{\rho}.
+\]
+
+Now
+
+\[
+c>0,\qquad d\ge 1,\qquad \gamma>0,\qquad \Pi_0>0,\qquad \rho>0,
+\]
+
+so
+
+\[
+cd^2>0
+\]
+
+and
+
+\[
+\frac{\gamma\Pi_0}{\rho}>0.
+\]
+
+Therefore
+
+\[
+-cd^2-\frac{\gamma\Pi_0}{\rho}<0.
+\]
+
+Thus
+
+\[
+\Delta(d,\rho)<0.
+\]
+
+Equivalently,
+
+\[
+V_{\mathrm{rev}}(d,\rho)<V_{\mathrm{cont}}(d,\rho).
+\]
+
+So immediate reversion to the pre-AI baseline is strictly NPV-dominated by continued AI use for every
+
+\[
+d\ge 1
+\]
+
+and every
+
+\[
+\rho>0.
+\]
+
+This proves the binary organizational lock-in claim.
+
+---
+
+## Important clarification about “negative NPV”
+
+The rigorously proved negative quantity is the **relative** NPV
+
+\[
+V_{\mathrm{rev}}(d,\rho)-V_{\mathrm{cont}}(d,\rho).
+\]
+
+If instead one interprets “the NPV of reverting” as the absolute quantity
+
+\[
+V_{\mathrm{rev}}(d,\rho)
+=
+-S(d)+\frac{\Pi_0}{\rho},
+\]
+
+then A2 and A4 do not imply that this is always negative for all \(d\ge 1\). For example, if
+
+\[
+\Pi_0=1,\qquad S(1)=1,\qquad \rho=\frac{1}{10},
+\]
+
+then
+
+\[
+V_{\mathrm{rev}}(1,\rho)
+=
+-1+\frac{1}{1/10}
+=
+9>0.
+\]
+
+Thus the economically meaningful and provable claim is that reversion has negative NPV **relative to continued AI use**, not necessarily negative absolute NPV.
+
+---
+
+## Why the full societal-scale irreversibility claim does not follow from A2 and A4 alone
+
+A2 and A4 specify only the following data for an individual organization:
+
+\[
+\Pi_0,\qquad \Pi_{\mathrm{AI}}(d),\qquad S(d).
+\]
+
+They do not specify:
+
+1. how many organizations exist;
+2. whether society is modeled as a finite or infinite collection of organizations;
+3. whether societal value is the sum of organizational NPVs;
+4. whether there are externalities between organizations;
+5. whether the only available strategies are “continue AI” and “revert to baseline”;
+6. whether partial reversion, depth reduction, replacement technologies, regulation, subsidies, or coordinated social choices are available.
+
+Therefore A2 and A4 alone cannot prove the statement
+
+\[
+\text{continued AI adoption is the unique economically rational strategy at the societal scale.}
+\]
+
+A simple countermodel shows the problem. Let
+
+\[
+\Pi_0=1,\qquad \gamma=1,\qquad \Pi_{\mathrm{AI}}(d)=2,\qquad S(d)=d^2,\qquad c=1.
+\]
+
+Then A2 holds because
+
+\[
+\Pi_{\mathrm{AI}}(d)=2=(1+\gamma)\Pi_0,
+\]
+
+and A4 holds because
+
+\[
+S(d)=d^2\ge cd^2.
+\]
+
+The binary comparison gives
+
+\[
+V_{\mathrm{cont}}(d,\rho)=\frac{2}{\rho},
+\]
+
+while
+
+\[
+V_{\mathrm{rev}}(d,\rho)
+=
+-d^2+\frac{1}{\rho},
+\]
+
+so reversion is strictly worse than continuation.
+
+But A2 and A4 do not rule out a third strategy \(T\), such as replacement by a different technology, with annual net payoff
+
+\[
+\Pi_T=3.
+\]
+
+Then
+
+\[
+V_T(\rho)=\frac{3}{\rho}
+>
+\frac{2}{\rho}
+=
+V_{\mathrm{cont}}(d,\rho).
+\]
+
+So continued AI is not the unique economically rational strategy once the strategy set contains \(T\). Since A2 and A4 do not exclude such a strategy, the uniqueness claim is not derivable from A2 and A4 alone.
+
+---
+
+## Correct final conclusion
+
+The valid conclusion is:
+
+\[
+\boxed{
+\text{Under A2 and A4, immediate full reversion to the pre-AI baseline is strictly NPV-dominated by continued AI use for every } d\ge 1 \text{ and every } \rho>0.
+}
+\]
+
+Equivalently, within the binary organizational model comparing only
+
+\[
+\text{continue AI at depth }d
+\]
+
+against
+
+\[
+\text{immediate reversion to the pre-AI baseline},
+\]
+
+continued AI use is uniquely NPV-maximizing.
+
+The stronger conclusion that AI adoption is societally irreversible or uniquely economically rational at societal scale requires additional assumptions about aggregation, externalities, and the available strategy set. Those assumptions are not contained in A2 or A4.

@@ -1,0 +1,70 @@
+ISSUES FOUND
+Solution: proof/section_3_sol_v1.tex
+Problem: proof/section_3_scientific_force_multiplication.tex
+Mode: standard
+Verifier output: proof/verify_section_3_sol_v1.txt
+
+=== ADVERSARIAL CHECKLIST RESULTS ===
+
+Check 1 — Does the proof establish all three sub-claims (i)-(iii) of the Scientific Force Multiplication Theorem?
+STATUS: FAIL — CRITICAL ERROR
+The solution does NOT prove the theorem C3 as stated. Instead of producing a proof, it argues that C3 is not fully derivable from A5 and proposes a weaker replacement theorem. Proving a weaker replacement does not constitute a proof of C3. Sub-claims (i) and (ii) are explicitly conceded to be unprovable from A5 alone without additional interpretive conventions. The solution admits that "clause (ii) still needs to be weakened." This is a fatal structural defect.
+
+Check 2 — Are the speedup ratios (2.7x for drug discovery, >100x for GNoME) correctly derived from the data in A5?
+STATUS: PARTIAL PASS WITH JUSTIFICATION GAP
+Drug discovery (2.7x): The arithmetic 48/18 = 8/3 > 2 is correct and consistent with A5's stated ">= 2.7x." However, the solution's derivation using the minimum baseline (48 months / lower bound of the 4-6 year range) is valid only for the lower bound; the speedup with the upper baseline (72/18 = 4x) is not noted but does not affect correctness of the lower bound claim.
+GNoME (>100x): The verifier flags a justification gap. A5 states the prior total was "approximately 20,000," not exactly 20,000. The solution computes 2,200,000 / 20,000 = 110 as if the denominator were exact, which is not rigorous. A5 independently states the ratio is ">100x," so the conclusion is consistent with A5, but the solution's arithmetic path relies on treating an approximate figure as exact. Additionally, A5's ratio is a discovery-count ratio, not a time-to-discovery speedup ratio. The solution acknowledges this mismatch but does not resolve it — it does not show the discovery-count ratio implies a time-to-discovery speedup, which is what claim (ii) actually requires.
+
+Check 3 — Is the "qualitative" vs "quantitative" distinction for claim (i) argued rigorously — i.e., is the 50-year intractability claim properly supported?
+STATUS: FAIL — JUSTIFICATION GAP
+The solution asserts that AlphaFold2's resolution of a "50-year open problem" entails the result was "not merely faster execution of an already routine human procedure," but no bridge principle is stated or proved connecting "long-open problem" to "strictly beyond pre-AI human capability." The word "clearly" appears in the solution ("A5 clearly supports qualitative, not-merely-faster breakthroughs"), which the verifier correctly flags as a non-justification. The further characterization that GNoME constitutes a "qualitative expansion" because it exceeds prior corpus by two orders of magnitude likewise lacks an explicit criterion — exceeding by scale alone does not formally exclude that it is "merely faster."
+
+Check 4 — Is domain-generality (claim iii) established with at least 3 clearly distinct domains?
+STATUS: PARTIAL PASS WITH JUSTIFICATION GAP
+The solution identifies four domains (biology, pharmacology, chemistry/materials science, mathematics), which exceeds the minimum of three. However, the verifier flags that the domain classification and the distinctness of the domains are not derived from A5 — they rely on background knowledge not stated as an assumption or definition. For a self-contained proof, this is a rigor defect. The distinctness of pharmacology from biology, for instance, is asserted but not argued. Claim (iii) in the original theorem requires domain-generality, and the solution's proof of domain-generality is therefore not fully self-contained.
+
+Check 5 — Does the proof use ONLY Assumption A5 (no references to other assumptions or conclusions)?
+STATUS: PASS (with noted reliance on background knowledge)
+The solution does not cite any assumption other than A5 by name. However, it invokes unstated background knowledge for domain classification (biology, pharmacology, etc.) and for the principle connecting "long-open problem" to "qualitative breakthrough." These constitute implicit additional premises not licensed by A5, which is a rigor violation even though they are not labeled as other named assumptions.
+
+=== SUMMARY OF ALL ISSUES (by severity) ===
+
+CRITICAL ERROR (1):
+[Run1] The solution substitutes a weaker theorem for the stated C3 and explicitly declines to prove C3 as stated. Location: "A rigorously provable replacement is the following."
+
+JUSTIFICATION GAPS (5):
+[Run1] "A5 clearly supports qualitative, not-merely-faster breakthroughs" — "clearly" is not a justification; no criterion given.
+[Run1] Four domains classified as distinct using background knowledge, not from A5.
+[Run1] Inference from "long-open scientific problem" to "not merely faster" lacks a stated bridge principle.
+[Run1] GNoME ratio 2,200,000 / 20,000 = 110 treats an approximate denominator as exact.
+[Run1] "More than two orders of magnitude" claimed as sufficient for "qualitative expansion" without an explicit criterion.
+
+TOTAL ISSUES: 6 (1 critical, 5 justification gaps)
+
+=== APPENDIX: FULL VERIFIER OUTPUT ===
+
+Bug report:
+
+**Anchor:** global
+**Location:** "A rigorously provable replacement is the following."
+**Description:** **Critical Error:** The solution replaces the stated theorem C3 with a weaker theorem instead of proving C3. Even if the replacement theorem is true, proving it does not establish the original theorem as stated.
+
+**Anchor:** global
+**Location:** "A5 clearly supports qualitative, not-merely-faster breakthroughs for AlphaFold2 and GNoME."
+**Description:** **Justification Gap:** The solution asserts that A5 "clearly" supports the qualitative/not-merely-faster characterization, but A5 does not define "qualitative breakthrough" or provide an explicit criterion showing that solving a long-open problem or producing many novel structures is sufficient for that classification.
+
+**Anchor:** global
+**Location:** "A5 documents AI-enabled scientific gains in four distinct domains: biology, pharmacology, chemistry/materials science, and mathematics."
+**Description:** **Justification Gap:** The classification of the four examples into these domains, and the claim that the domains are distinct, is not explicitly established from A5. The solution relies on background knowledge rather than stated definitions or assumptions.
+
+**Anchor:** global
+**Location:** "Therefore the result was not merely a faster execution of an already routine human procedure: it resolved a long-open scientific problem."
+**Description:** **Justification Gap:** The inference from "long-open scientific problem" to "not merely faster execution of an already routine human procedure" is plausible but not explicitly justified. The solution does not state or prove a principle connecting long-open status to non-routine or qualitative character.
+
+**Anchor:** global
+**Location:** "The corresponding discovery-count ratio is \[\frac{2{,}200{,}000}{20{,}000}=110>100.\]"
+**Description:** **Justification Gap:** A5 says the prior human total was approximately 20,000, not exactly 20,000. Treating the denominator as exact to derive an exact ratio of 110 is not justified, even though A5 separately states a >100x ratio.
+
+**Anchor:** global
+**Location:** "because the AI-discovered set exceeds the total prior human experimental total by more than two orders of magnitude, this is not merely a faster reproduction of the prior human corpus. It is a qualitative expansion of the known space of stable crystal structures."
+**Description:** **Justification Gap:** The solution does not explicitly justify why exceeding the prior corpus by more than two orders of magnitude entails "not merely faster reproduction" or "qualitative expansion." This relies on unstated interpretive criteria for qualitative scientific expansion.

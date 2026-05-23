@@ -1,0 +1,105 @@
+I cannot honestly give a rigorous proof of the theorem **exactly as stated** from Assumption~A5 alone. The issue is that A5 proves a strong scientific-force-multiplication claim, but it does **not** prove every literal subclaim of C3.
+
+### Why the stated theorem is not fully derivable
+
+Clause **(ii)** says:
+
+> “The time-to-discovery speedup attributable to AI is at least $2\times$ in each documented case, and exceeds $100\times$ in at least one case.”
+
+But A5 provides only the following quantitative facts:
+
+- **Drug discovery:** human-only baseline is $4$--$6$ years, i.e. $48$--$72$ months, while the AI-assisted case took $18$ months. Thus the speedup is at least  
+  \[
+  \frac{48}{18}=\frac{8}{3}>2,
+  \]
+  approximately $2.7\times$.
+
+- **GNoME:** A5 gives an output/discovery-count ratio  
+  \[
+  \frac{2{,}200{,}000}{20{,}000}=110>100.
+  \]
+  This is a discovery-scale ratio, not explicitly a time-to-discovery speedup.
+
+- **AlphaFold2:** A5 says the problem had been open for $50$ years and was solved to near-experimental accuracy, but it does not give an AI elapsed-time denominator from which to compute a numerical speedup.
+
+- **Lean4 AI:** A5 says the tasks previously required years of specialist effort, but it does not give the AI-assisted time, so no numerical speedup ratio can be rigorously computed.
+
+Thus A5 proves one explicit time-speedup case greater than $2\times$ and one output-scale ratio greater than $100\times$, but not a $2\times$ time-to-discovery speedup “in each documented case.”
+
+Clause **(i)** is also slightly stronger than what A5 unambiguously proves. A5 clearly supports qualitative, not-merely-faster breakthroughs for AlphaFold2 and GNoME. It may also support such a claim for AI-assisted formal proof if “beyond pre-AI human capability” is interpreted operationally as “not previously achieved by pre-AI human-only efforts.” But in the stronger sense of “humans could not have achieved it,” A5 does not fully establish that, since it says the tasks previously required years of specialist effort, not that they were impossible for specialists.
+
+A rigorously provable replacement is the following.
+
+```tex
+\begin{theorem}[Scientific Force Multiplication, Provable Form]
+  Under Assumption~A5, AI systems constitute a cross-domain scientific
+  force multiplier in the following precise sense:
+  \begin{enumerate}
+    \item[(a)] A5 documents AI-enabled scientific gains in four distinct
+    domains: biology, pharmacology, chemistry/materials science, and
+    mathematics.
+    \item[(b)] At least two documented cases, AlphaFold2 and GNoME, are
+    qualitative breakthroughs rather than merely faster executions of
+    routine pre-existing workflows.
+    \item[(c)] A5 documents a time-to-discovery speedup greater than
+    $2\times$ in drug discovery.
+    \item[(d)] A5 documents a discovery-scale multiplication greater than
+    $100\times$ in materials discovery.
+  \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+  We consider the four items listed in Assumption~A5.
+
+  First, AlphaFold2 belongs to biology, specifically protein-structure
+  prediction.  By A5, AlphaFold2 solved protein-structure prediction to
+  near-experimental accuracy, and this problem had been open for $50$ years.
+  Therefore the result was not merely a faster execution of an already
+  routine human procedure: it resolved a long-open scientific problem.
+  Hence AlphaFold2 supplies a qualitative breakthrough in biology.
+
+  Second, the Insilico Medicine case belongs to pharmacology and drug
+  discovery.  By A5, an AI-designed drug candidate reached Investigational
+  New Drug approval in $18$ months, whereas the historical human-only
+  average is $4$--$6$ years.  Converting years to months, the human-only
+  baseline is $48$--$72$ months.  Therefore the minimum documented speedup is
+  \[
+    \frac{48}{18}=\frac{8}{3}>2.
+  \]
+  Thus A5 establishes a time-to-discovery speedup greater than $2\times$ in
+  the pharmacological domain.  Equivalently, using the rounded figure stated
+  in A5, the speedup is approximately $2.7\times$.
+
+  Third, GNoME belongs to chemistry and materials science, specifically the
+  discovery of stable crystal structures.  By A5, GNoME discovered
+  $2.2$ million novel stable crystal structures, whereas all prior human
+  experimental discovery had produced approximately $20{,}000$ such
+  structures over decades.  The corresponding discovery-count ratio is
+  \[
+    \frac{2{,}200{,}000}{20{,}000}=110>100.
+  \]
+  Thus GNoME supplies a discovery-scale multiplication exceeding
+  $100\times$.  Moreover, because the AI-discovered set exceeds the total
+  prior human experimental total by more than two orders of magnitude, this
+  is not merely a faster reproduction of the prior human corpus.  It is a
+  qualitative expansion of the known space of stable crystal structures.
+
+  Fourth, the Lean4 AI case belongs to mathematics, specifically formal proof
+  search and combinatorics.  By A5, AI-assisted proof search produced novel
+  proof strategies for open combinatorics problems, where such tasks had
+  previously required years of specialist effort.  This establishes that the
+  documented gains are not confined to empirical natural science, but extend
+  also to mathematical research.
+
+  The four documented domains are therefore biology, pharmacology,
+  chemistry/materials science, and mathematics.  Since these are distinct
+  scientific domains, A5 establishes cross-domain rather than single-domain
+  acceleration.  Combining the qualitative breakthroughs from AlphaFold2 and
+  GNoME, the $>2\times$ time-speedup in drug discovery, the $>100\times$
+  discovery-scale multiplication in materials science, and the additional
+  mathematical example from Lean4 AI, we obtain the claimed provable form of
+  scientific force multiplication.
+\end{proof}
+```
+
+If the intended theorem must keep clause **(i)** exactly as written, then one additional interpretive convention is needed: namely, that “strictly beyond pre-AI human capability” means “strictly beyond what pre-AI human-only efforts had actually achieved.” Under that weaker operational reading, AlphaFold2, GNoME, and Lean4 AI can be used as the three qualitative domains. However, clause **(ii)** still needs to be weakened from “time-to-discovery speedup in each documented case” to “documented quantitative force-multiplication ratios,” because A5 does not provide time-speedup data for all four cases.

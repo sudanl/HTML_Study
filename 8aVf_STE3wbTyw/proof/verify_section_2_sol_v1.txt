@@ -1,0 +1,10 @@
+Anchor: global  
+Location: “Then for every \(d\ge 1\) and every \(\rho>0\), reverting has strictly negative NPV relative to continuing AI. Hence, within this two-strategy model, continuing AI is the unique NPV-maximizing strategy.”  
+Description: Critical Error: The corrected theorem’s listed assumptions do not include \(\Pi_0\ge 0\), but the claimed dominance can fail if \(\Pi_0<0\). Under A2, one may have \(\Pi_{\mathrm{AI}}(d)=(1+\gamma)\Pi_0\), in which case \((\Pi_0-\Pi_{\mathrm{AI}}(d))/\rho=-\gamma\Pi_0/\rho\) is positive when \(\Pi_0<0\) and can outweigh the switching cost. Thus the corrected theorem is not valid from its stated assumptions.
+
+Anchor: global  
+Location: “Since \(c>0\), \(d\ge 1\), \(\gamma>0\), \(\rho>0\), and \(\Pi_0\ge 0\), we have  
+\[
+-cd^2-\frac{\gamma \Pi_0}{\rho}<0.
+\]”  
+Description: Justification Gap: The proof invokes \(\Pi_0\ge 0\), but neither A2, A4, nor the corrected theorem’s additional assumptions explicitly establish this condition.

@@ -1,0 +1,166 @@
+CONSOLIDATED BUG REPORT
+Proof: proof/section_1_sol_v1.tex
+Problem: proof/section_1_capability_inevitability.tex
+Mode: pessimistic (3 parallel verifier runs)
+Result: ISSUES_FOUND
+
+Runs 2 and 3 flagged justification gaps. Run 1 returned clean. Under pessimistic mode, any flagged run = ISSUES_FOUND.
+
+---------------------------------------------------------------------
+ISSUES (deduplicated, with originating run(s) noted)
+---------------------------------------------------------------------
+
+ISSUE 1 [Runs 2, 3] — Step 1: Budget-to-compute conversion unjustified
+  Anchor: Step 1
+  Location: "The maximum amount of compute purchasable at time t is C_B(t) = B / k(t)"
+  Description: A1 states that hardware cost per FLOP declines, but the proof does not
+  explicitly justify the total-cost model "cost of C FLOPs = k(t)*C", does not rule out
+  other costs or constraints (e.g., energy, personnel, amortised capital), and does not
+  establish k(t) > 0, which is required for the division to be valid.
+
+ISSUE 2 [Runs 2, 3] — Step 1: Best-loss identification unjustified
+  Anchor: Step 1
+  Location: "the best loss achievable within budget B at time t is L_B(t) = (C_0 / C_B(t))^alpha"
+  Description: A1 provides a scaling law for large neural-network models trained with compute
+  C. The proof does not establish (a) that the scaling law is the best achievable AI system
+  for budget B, (b) that C_B(t) always falls in the "large model" regime required for the
+  law to hold, or (c) that no other architecture or paradigm achieves lower loss within the
+  same budget. The identification of the scaling-law loss with the globally optimal loss is
+  therefore not justified by A1 alone.
+
+ISSUE 3 [Runs 2, 3] — Step 3: Sign of D_L(t) never established
+  Anchor: Step 3
+  Location: "D_L(t) = L_pre - L_B(t) … the AI system's loss advantage grows over time"
+  Description: The proof shows D_L'(t) > 0, i.e. the gap is increasing. It does not
+  establish D_L(t) > 0, i.e. that AI actually outperforms the pre-AI baseline. The claim
+  of "advantage" requires L_pre > L_B(t), which is neither assumed nor proved. Sub-claim
+  (ii) therefore rests on an unverified positivity condition.
+
+ISSUE 4 [Run 2] — Step 3: Sign of D_kappa(t) never established
+  Anchor: Step 3
+  Location: "D_kappa(t) = kappa_B(t) - kappa_pre … the capability deficit grows at an
+  accelerating rate"
+  Description: The computation shows D_kappa'(t) > 0 and D_kappa''(t) > 0, but it does not
+  establish D_kappa(t) > 0. Without the condition kappa_B(t) > kappa_pre, the quantity is
+  not necessarily a "deficit" of the pre-AI system and the label "capability deficit" is
+  inconsistent with its definition. Sub-claim (ii) is therefore incomplete.
+
+ISSUE 5 [Runs 2, 3] — Step 5: "Economically dominated" argument formally invalid
+  Anchor: Step 5
+  Location: "if one adds the economic assumption that, at equal cost, higher kappa strictly
+  increases organizational payoff, then whenever kappa_B(t) > kappa_pre, the pre-AI baseline
+  is economically dominated by AI adoption at time t"
+  Description: The proof's own earlier definition of economic dominance requires payoff to be
+  weakly higher in ALL relevant states and strictly higher in at least one. The added
+  assumption only supplies a capability-payoff monotonicity condition at equal cost. The proof
+  does not (a) specify or bound the relevant state space, (b) account for all non-capability
+  payoff factors (cost differentials, risk, transition costs, etc.), or (c) verify the
+  required statewise dominance condition. Sub-claim (iii) is therefore not formally
+  established.
+
+---------------------------------------------------------------------
+NOTES ON THE ADVERSARIAL CHECKLIST
+---------------------------------------------------------------------
+
+(1) Sub-claims (i)-(iii): Sub-claim (i) (capability grows) is partially supported but
+    relies on the unjustified best-loss identification (Issue 2). Sub-claim (ii) (growing
+    advantage) is incomplete because the sign of the deficit is never established (Issues
+    3, 4). Sub-claim (iii) (economic domination) is formally invalid (Issue 5).
+
+(2) Power-law / compute-cost derivation: The algebraic manipulation of the scaling law is
+    internally consistent given the formula, but the formula itself is not validly derived
+    from A1 alone (Issues 1, 2).
+
+(3) "Economically dominated" / capability deficit consistency: "capability deficit" is
+    introduced without proving it is positive, making the term inconsistent with its
+    definition throughout Steps 3 and 5 (Issues 3, 4, 5).
+
+(4) Assumption scope: No verifier run flagged references to A2-A5 or C2-C4. The proof
+    appears to stay within A1 (plus the explicitly flagged extra economic assumption in
+    Step 5). No violation detected here.
+
+(5) Algebraic steps: No arithmetic errors found. All derivative computations are
+    mechanically correct. All inequalities in the derivative chain are valid given the
+    stated inputs. The gaps are logical/definitional, not computational.
+
+---------------------------------------------------------------------
+APPENDIX A — Full output: verify_section_1_v1_run1.txt
+---------------------------------------------------------------------
+
+The solution is correct.
+
+---------------------------------------------------------------------
+APPENDIX B — Full output: verify_section_1_v1_run2.txt
+---------------------------------------------------------------------
+
+Anchor: Step 1
+Location: "The maximum amount of compute purchasable at time t is C_B(t) = B / k(t)"
+Description: Justification Gap: A1 states that hardware cost per FLOP declines, but the
+solution does not explicitly justify the total-cost model "cost of C FLOPs equals k(t)C,"
+nor does it rule out other costs or constraints. The division by k(t) also requires k(t)>0,
+which is not explicitly established.
+
+Anchor: Step 1
+Location: "the best loss achievable within budget B at time t is L_B(t) = (C_0 / C_B(t))^alpha"
+Description: Justification Gap: A1 gives a scaling relation for large neural-network models
+trained with compute C; it does not establish that this scaling-law family is the best AI
+system purchasable within budget B, that the budget always places the system in the "large
+model" regime, or that no other AI system achieves a different loss. The equality between
+the scaling-law loss and the "best loss achievable" is therefore not justified.
+
+Anchor: Step 3
+Location: "D_L(t) = L_pre - L_B(t) … the AI system's loss advantage grows over time."
+Description: Justification Gap: The derivative D_L'(t) > 0 shows only that D_L(t)
+increases. It does not establish that D_L(t) > 0, i.e. that the AI system actually has a
+loss advantage over the pre-AI baseline. That would require an additional condition such
+as L_pre > L_B(t).
+
+Anchor: Step 3
+Location: "D_kappa(t) = kappa_B(t) - kappa_pre … the capability deficit grows at an
+accelerating rate."
+Description: Justification Gap: The computation shows D_kappa'(t) > 0 and D_kappa''(t) > 0,
+but it does not establish that D_kappa(t) > 0. Without assuming kappa_B(t) > kappa_pre, the
+quantity need not be a "deficit" of the pre-AI system relative to AI.
+
+Anchor: Step 5
+Location: "if one adds the economic assumption that, at equal cost, higher kappa strictly
+increases organizational payoff, then whenever kappa_B(t) > kappa_pre, the pre-AI baseline
+is economically dominated by AI adoption at time t."
+Description: Justification Gap: The stated economic assumption is not enough to prove
+economic dominance as previously defined. The solution does not establish that the AI and
+pre-AI strategies actually have equal cost, that all other payoff-relevant factors are
+equal, or that the payoff inequality holds in all relevant states with strict inequality
+in at least one.
+
+---------------------------------------------------------------------
+APPENDIX C — Full output: verify_section_1_v1_run3.txt
+---------------------------------------------------------------------
+
+Anchor: Step 1
+Location: "Fix a budget B>0. The maximum amount of compute purchasable at time t is
+C_B(t) = B / k(t). … the best loss achievable within budget B at time t is
+L_B(t) = (C_0 / C_B(t))^alpha."
+Description: Justification Gap. Assumption A1 gives a cost-per-FLOP decline and a
+loss-vs-compute law for large neural-network models, but it does not explicitly establish
+that a budget can be converted entirely and continuously into training FLOPs, that no other
+costs or constraints matter, that C_B(t) lies in the "large model" scaling regime, or that
+the globally best purchasable AI system within budget B is exactly obtained by training at
+compute C_B(t).
+
+Anchor: Step 3
+Location: "So, under the extra assumption that the pre-AI baseline has constant loss
+L_pre, the AI system's loss advantage grows over time."
+Description: Justification Gap. The computation D_L'(t) > 0 only shows that
+L_pre - L_B(t) increases. To call this an "AI system's loss advantage," the solution must
+also establish L_pre > L_B(t) on the relevant time interval. That condition is not assumed
+or proved.
+
+Anchor: Step 5
+Location: "if one adds the economic assumption that, at equal cost, higher kappa strictly
+increases organizational payoff, then whenever kappa_B(t) > kappa_pre, the pre-AI baseline
+is economically dominated by AI adoption at time t."
+Description: Justification Gap. The solution's own earlier dominance definition requires
+payoff weakly higher in all relevant states and strictly higher in at least one. The stated
+added assumption only gives a capability-payoff monotonicity condition at equal cost; it
+does not specify the relevant state space, all non-capability costs or constraints, or
+verify the required statewise dominance condition.

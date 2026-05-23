@@ -1,0 +1,19 @@
+**Anchor:** global  
+**Location:** “Below is the strongest theorem that follows from A2 and A4 alone.”  
+**Description:** Justification Gap: The solution gives no argument establishing that this is the strongest consequence of A2 and A4. Proving one weaker theorem and discussing selected stronger claims does not establish maximality.
+
+**Anchor:** global  
+**Location:** “For any organization satisfying A2 and A4 ... immediate reversion to the pre-AI baseline is strictly NPV-dominated by continued AI use ... Thus, within the binary choice set ... continued AI use is the unique NPV-maximizing strategy.”  
+**Description:** Critical Error: The solution replaces the stated theorem with a different relative, binary comparison theorem. Showing \(V_{\mathrm{rev}}(d,\rho)-V_{\mathrm{cont}}(d,\rho)<0\) does not prove the original claim that the NPV of reverting itself is strictly negative beyond a threshold, nor does it prove the stated societal-scale irreversibility conclusion.
+
+**Anchor:** global  
+**Location:** “Using continuous-time discounting, the present value of a constant annual payoff \(X\) is \(\int_0^\infty e^{-\rho t}X\,dt=\frac{X}{\rho}\) ... Therefore \(V_{\mathrm{cont}}(d,\rho)=\frac{\Pi_{\mathrm{AI}}(d)}{\rho}\).”  
+**Description:** Justification Gap: The proof assumes an infinite time horizon, continuous-time discounting, and constant perpetual payoff streams. These valuation conventions are not stated in A2, A4, or the corrected theorem before the value formulas are asserted.
+
+**Anchor:** global  
+**Location:** “For example, if \(\Pi_0=1,\qquad S(1)=1,\qquad \rho=\frac{1}{10}\), then \(V_{\mathrm{rev}}(1,\rho)=9>0\).”  
+**Description:** Justification Gap: The example does not specify a full model satisfying A2 and A4: it omits \(\gamma\), \(c\), \(\Pi_{\mathrm{AI}}(d)\), and \(S(d)\) for all \(d\ge 1\). Therefore it does not, as written, establish a valid counterexample under the stated assumptions.
+
+**Anchor:** global  
+**Location:** “A simple countermodel shows the problem. Let \(\Pi_0=1,\gamma=1,\Pi_{\mathrm{AI}}(d)=2,S(d)=d^2,c=1\). ... But A2 and A4 do not rule out a third strategy \(T\) ... \(V_T(\rho)=\frac{3}{\rho}\).”  
+**Description:** Justification Gap: The alleged countermodel to the societal-scale uniqueness claim is not fully specified. It gives no societal aggregation rule, no model of organizations at societal scale, no complete strategy set, no externality structure, and no transition costs or timing assumptions for \(T\). Thus it does not formally establish a countermodel to the societal-scale statement.

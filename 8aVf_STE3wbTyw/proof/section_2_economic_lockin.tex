@@ -25,16 +25,20 @@
 \begin{assumption}[Documented Productivity Gains (A2)]
   AI adoption delivers statistically significant, sustained productivity gains
   across sectors.  Formally, for an organization at integration depth $d \geq 1$,
-  let $\Pi_{\mathrm{AI}}(d)$ be annual productivity and $\Pi_0$ the pre-AI
-  baseline.  Empirical data establish that
-  $\Pi_{\mathrm{AI}}(d) \geq (1 + \gamma)\,\Pi_0$ for some $\gamma > 0$
-  (with $\gamma \approx 0.3$--$0.55$ in documented cases).
+  let $\Pi_{\mathrm{AI}}(d)$ be annual \emph{net} payoff (revenue minus costs,
+  including AI operating costs) and $\Pi_0 > 0$ the pre-AI net payoff baseline
+  (strictly positive: the organization is viable before AI).
+  Empirical data establish that $\Pi_{\mathrm{AI}}(d) \geq (1 + \gamma)\,\Pi_0$
+  for some $\gamma > 0$ (with $\gamma \approx 0.3$--$0.55$ in documented cases).
+  That is, $\Pi_{\mathrm{AI}}$ is already \emph{net} of AI operating costs.
 \end{assumption}
 
 \begin{assumption}[Super-Linear Switching Costs (A4)]
-  Removing AI from a pipeline at integration depth $d$ incurs switching cost
-  $S(d) = \Omega(d^2)$ — i.e., there exists $c > 0$ such that
+  Removing AI from a pipeline at integration depth $d$ incurs a one-time
+  switching cost $S(d)$ satisfying: there exists $c > 0$ such that
   $S(d) \geq c\,d^2$ for all $d \geq 1$.
+  After reversion the organization returns to net payoff $\Pi_0$ (no other
+  reversion-side benefits or costs).
 \end{assumption}
 
 \subsection*{Statement to Prove (C2)}

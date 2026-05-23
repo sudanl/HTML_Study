@@ -1,0 +1,585 @@
+## Repaired improved solution
+
+The bug report is correct. The earlier Step \(4\) was too quick: a low-cost non-AI transition path does **not** by itself establish non-irrevocability unless the path is also feasible, preserves the critical function, and has acceptable degradation. The repaired argument below makes those conditions explicit.
+
+No external results are needed.
+
+---
+
+## 1. What follows directly from \(A3\)
+
+Let
+
+\[
+\mathcal X=\{E,H,F,Ed\},
+\]
+
+where
+
+\[
+E=\text{energy infrastructure},\qquad
+H=\text{healthcare},\qquad
+F=\text{fiscal systems},\qquad
+Ed=\text{education}.
+\]
+
+By Assumption \(A3\), for every \(X\in\mathcal X\),
+
+\[
+\text{AI is operationally embedded in }X
+\]
+
+and
+
+\[
+X\text{ is operationally critical}.
+\]
+
+Therefore \(A3\) proves that AI is embedded in four sectorally distinct critical societal systems.
+
+If the word “independent” in \(C4(i)\) means merely that the four systems belong to distinct societal sectors, then \(C4(i)\) follows from \(A3\). If “independent” means probabilistically, institutionally, or causally independent, that stronger notion is not defined in \(A3\), and therefore is not derivable from \(A3\) alone.
+
+For each \(X\in\mathcal X\), let
+
+\[
+d_X(t)\ge 0
+\]
+
+denote the integration depth of the AI deployment in system \(X\) at time \(t\), and let
+
+\[
+\delta_X=d_X(0)
+\]
+
+be its current integration depth.
+
+Assumption \(A4\) states that for the critical systems in \(A3\), current depth is high:
+
+\[
+\delta_X\gg 1.
+\]
+
+In particular, for hospital and grid systems, \(A4\) gives the estimate
+
+\[
+\delta_X\ge 100.
+\]
+
+Since \(A4\) also states that there exists \(c>0\) such that
+
+\[
+S(d)\ge c d^2
+\qquad\text{for all }d\ge 1,
+\]
+
+we obtain, for every \(X\in\mathcal X\) with \(\delta_X\ge 1\),
+
+\[
+S(\delta_X)\ge c\delta_X^2.
+\]
+
+Thus \(A3+A4\) imply current AI embedding in four critical sectors and a quadratic lower bound on switching cost as a function of integration depth.
+
+---
+
+## 2. What \(A4\) proves about lock-in growth
+
+Assumption \(A4\) states that for any operationally active deployment,
+
+\[
+d_X(t+1)\ge d_X(t)+1.
+\]
+
+We prove by induction that for every integer \(n\ge 0\),
+
+\[
+d_X(t+n)\ge d_X(t)+n.
+\]
+
+For \(n=0\),
+
+\[
+d_X(t+0)=d_X(t)\ge d_X(t)+0,
+\]
+
+so the claim holds.
+
+Assume the claim holds for some \(n\ge 0\). Then
+
+\[
+d_X(t+n)\ge d_X(t)+n.
+\]
+
+Using the depth-growth condition from \(A4\),
+
+\[
+d_X(t+n+1)\ge d_X(t+n)+1.
+\]
+
+Therefore,
+
+\[
+d_X(t+n+1)
+\ge d_X(t+n)+1
+\ge d_X(t)+n+1.
+\]
+
+So the induction step holds. Hence, for all \(n\ge 0\),
+
+\[
+d_X(t+n)\ge d_X(t)+n.
+\]
+
+Now suppose \(n\ge 1\). Then
+
+\[
+d_X(t+n)\ge d_X(t)+n>d_X(t).
+\]
+
+Because \(S\) is strictly increasing by \(A4\),
+
+\[
+S(d_X(t+n))>S(d_X(t)).
+\]
+
+Moreover, whenever \(d_X(t+n)\ge 1\), the quadratic lower bound gives
+
+\[
+S(d_X(t+n))\ge c\,d_X(t+n)^2.
+\]
+
+Since
+
+\[
+d_X(t+n)\ge d_X(t)+n\ge 0,
+\]
+
+we also have
+
+\[
+d_X(t+n)^2\ge \bigl(d_X(t)+n\bigr)^2.
+\]
+
+Thus
+
+\[
+S(d_X(t+n))
+\ge c\bigl(d_X(t)+n\bigr)^2.
+\]
+
+So \(A4\) rigorously proves the conditional escalation:
+
+\[
+\text{continued active use}
+\Longrightarrow
+\text{greater integration depth}
+\Longrightarrow
+\text{strictly greater switching cost}.
+\]
+
+However, \(A4\) does **not** prove the further behavioral implication
+
+\[
+\text{greater switching cost}
+\Longrightarrow
+\text{continued use}.
+\]
+
+That implication would require an additional decision-theoretic or institutional assumption.
+
+---
+
+## 3. Why \(C4(ii)\) is not derivable from \(A3+A4\)
+
+Claim \(C4(ii)\) says:
+
+\[
+\text{removing AI would incur switching costs prohibitive relative to annual operating budget.}
+\]
+
+But neither \(A3\) nor \(A4\) defines an annual operating budget. Let
+
+\[
+B_X>0
+\]
+
+denote the annual operating budget of system \(X\). Also, neither assumption defines “prohibitive.” A natural formalization would be: switching cost is prohibitive relative to budget if, for some threshold \(\alpha>0\),
+
+\[
+S(\delta_X)\ge \alpha B_X.
+\]
+
+Under this formalization, \(A3+A4\) still do not imply \(C4(ii)\).
+
+To see this, fix arbitrary budgets
+
+\[
+B_X>0
+\qquad
+(X\in\mathcal X)
+\]
+
+and a threshold
+
+\[
+\alpha>0.
+\]
+
+Let
+
+\[
+B_{\min}=\min_{X\in\mathcal X}B_X.
+\]
+
+Since every \(B_X>0\), we have
+
+\[
+B_{\min}>0.
+\]
+
+Choose a large depth \(D\ge 100\), so that \(D\gg 1\). Then choose \(\varepsilon>0\) satisfying
+
+\[
+0<\varepsilon<\frac{\alpha B_{\min}}{D^2}.
+\]
+
+Define
+
+\[
+S(d)=\varepsilon d^2
+\]
+
+and define, for each \(X\in\mathcal X\),
+
+\[
+d_X(t)=D+t.
+\]
+
+Then
+
+\[
+S(0)=0.
+\]
+
+If \(d_2>d_1\ge 0\), then
+
+\[
+S(d_2)-S(d_1)
+=
+\varepsilon d_2^2-\varepsilon d_1^2
+=
+\varepsilon(d_2-d_1)(d_2+d_1)>0.
+\]
+
+Hence \(S\) is strictly increasing.
+
+Also, for all \(d\ge 1\),
+
+\[
+S(d)=\varepsilon d^2.
+\]
+
+Therefore the super-linear lower bound in \(A4\) is satisfied with
+
+\[
+c=\varepsilon.
+\]
+
+Finally,
+
+\[
+d_X(t+1)=D+t+1=d_X(t)+1.
+\]
+
+So the depth-growth clause of \(A4\) is also satisfied.
+
+Thus this construction satisfies all mathematical clauses of \(A4\), and it is compatible with \(A3\), since \(A3\) only asserts current embedding and operational criticality of the four systems.
+
+But at the current time,
+
+\[
+\delta_X=d_X(0)=D,
+\]
+
+so
+
+\[
+S(\delta_X)=S(D)=\varepsilon D^2.
+\]
+
+By the choice of \(\varepsilon\),
+
+\[
+\varepsilon D^2<\alpha B_{\min}.
+\]
+
+Since
+
+\[
+B_{\min}\le B_X
+\]
+
+for every \(X\in\mathcal X\), we obtain
+
+\[
+S(\delta_X)<\alpha B_X.
+\]
+
+Therefore switching cost is **not** prohibitive under the proposed threshold definition.
+
+This shows that \(A3+A4\) do not imply \(C4(ii)\). The key reason is that \(A4\) only asserts the existence of some constant \(c>0\), but gives no quantitative lower bound on \(c\) in budget units. Since \(c\) may be arbitrarily small, the inequality
+
+\[
+S(d)\ge c d^2
+\]
+
+does not by itself imply
+
+\[
+S(\delta_X)\ge \alpha B_X.
+\]
+
+---
+
+## 4. Repaired analysis of \(C4(iv)\)
+
+Claim \(C4(iv)\) says that AI’s role is “structurally unavoidable” and that societal infrastructure is “irrevocably AI-dependent.”
+
+These terms are not formally defined in \(A3\) or \(A4\). A natural formalization would be the following.
+
+For each system \(X\in\mathcal X\), let \(P\) denote a possible non-AI transition path. Introduce predicates and functions:
+
+\[
+\operatorname{Feas}_X(P)
+\]
+
+meaning that \(P\) is feasible for system \(X\),
+
+\[
+\operatorname{Pres}_X(P)
+\]
+
+meaning that \(P\) preserves the critical function of \(X\),
+
+\[
+\operatorname{Deg}_X(P)\ge 0
+\]
+
+meaning the degradation caused by \(P\), and
+
+\[
+\operatorname{Cost}_X(P)\ge 0
+\]
+
+meaning the cost of \(P\).
+
+Let \(\eta_X\ge 0\) be the maximum acceptable degradation level, and let \(\alpha B_X\) be the maximum acceptable transition cost.
+
+Then one precise way to define “irrevocably AI-dependent” is:
+
+\[
+X\text{ is irrevocably AI-dependent}
+\]
+
+if and only if there exists no transition path \(P\) such that
+
+\[
+\operatorname{Feas}_X(P),
+\]
+
+\[
+\operatorname{Pres}_X(P),
+\]
+
+\[
+\operatorname{Deg}_X(P)\le \eta_X,
+\]
+
+and
+
+\[
+\operatorname{Cost}_X(P)\le \alpha B_X.
+\]
+
+Equivalently, \(X\) is **not** irrevocably AI-dependent if there exists some \(P\) such that
+
+\[
+\operatorname{Feas}_X(P)
+\land
+\operatorname{Pres}_X(P)
+\land
+\operatorname{Deg}_X(P)\le \eta_X
+\land
+\operatorname{Cost}_X(P)\le \alpha B_X.
+\]
+
+The earlier solution only asserted a low-cost path. The repaired compatibility argument must assert all four conditions.
+
+Using the same construction from Section \(3\), extend the interpretation as follows. For each \(X\in\mathcal X\), stipulate the existence of a non-AI transition path \(P_X\) satisfying
+
+\[
+\operatorname{Feas}_X(P_X),
+\]
+
+\[
+\operatorname{Pres}_X(P_X),
+\]
+
+\[
+\operatorname{Deg}_X(P_X)=0\le \eta_X,
+\]
+
+and
+
+\[
+\operatorname{Cost}_X(P_X)=S(D)=\varepsilon D^2<\alpha B_X.
+\]
+
+Therefore, for each \(X\in\mathcal X\), there exists a feasible non-AI transition path \(P_X\) that preserves the critical function, has acceptable degradation, and has acceptable cost.
+
+This explicit addition does not contradict \(A3\), because \(A3\) says only that AI is currently operationally embedded in the four systems and that those systems are critical. It does not say that no non-AI transition path exists.
+
+It also does not contradict \(A4\), because \(A4\) says only that switching cost increases with integration depth and has a quadratic lower bound. It does not forbid the existence of a feasible transition path whose cost equals the switching cost \(S(D)\) and is still below the chosen budget threshold.
+
+Hence \(A3+A4\) are compatible with the existence of feasible AI-removal paths that preserve the critical function and have acceptable cost and degradation.
+
+Therefore \(A3+A4\) do not imply irrevocable AI-dependence.
+
+---
+
+## 5. Correct theorem actually implied by \(A3+A4\)
+
+The following weaker theorem is rigorously implied by \(A3\) and \(A4\).
+
+\[
+\boxed{
+\begin{minipage}{0.9\linewidth}
+Under Assumptions \(A3\) and \(A4\), AI is operationally embedded in four sectorally distinct critical societal systems. For each such deployment with current integration depth \(\delta_X\ge 1\), switching cost satisfies
+\[
+S(\delta_X)\ge c\delta_X^2.
+\]
+Moreover, if the deployment remains operationally active for \(n\ge 1\) additional periods, then
+\[
+d_X(t+n)\ge d_X(t)+n
+\]
+and
+\[
+S(d_X(t+n))>S(d_X(t)).
+\]
+Furthermore,
+\[
+S(d_X(t+n))\ge c\bigl(d_X(t)+n\bigr)^2.
+\]
+Thus continued active use creates a strictly increasing switching-cost exposure with an at least quadratic lower bound.
+\end{minipage}
+}
+\]
+
+This is the strongest conclusion supported directly by \(A3+A4\).
+
+---
+
+## 6. Additional assumptions needed to prove the original \(C4\)
+
+To prove the original theorem as stated, one would need additional assumptions.
+
+For example, for each \(X\in\mathcal X\), introduce a budget
+
+\[
+B_X>0
+\]
+
+and a prohibitiveness threshold
+
+\[
+\alpha>0.
+\]
+
+Then add the quantitative assumption
+
+\[
+c\delta_X^2\ge \alpha B_X.
+\]
+
+Since
+
+\[
+S(\delta_X)\ge c\delta_X^2,
+\]
+
+this would imply
+
+\[
+S(\delta_X)\ge \alpha B_X,
+\]
+
+which would prove budget-prohibitiveness under the definition
+
+\[
+\text{prohibitive}
+\iff
+S(\delta_X)\ge \alpha B_X.
+\]
+
+To prove practical infeasibility, one would additionally need something like
+
+\[
+S(\delta_X)\ge \alpha B_X
+\Longrightarrow
+\text{AI removal from }X\text{ is practically infeasible}.
+\]
+
+To prove irrevocable AI-dependence, one would need an assumption excluding feasible non-AI transition paths, for example:
+
+\[
+\neg\exists P\,
+\bigl(
+\operatorname{Feas}_X(P)
+\land
+\operatorname{Pres}_X(P)
+\land
+\operatorname{Deg}_X(P)\le \eta_X
+\land
+\operatorname{Cost}_X(P)\le \alpha B_X
+\bigr).
+\]
+
+Finally, to prove the full self-reinforcing behavioral loop
+
+\[
+\text{higher switching cost}
+\Longrightarrow
+\text{continued use},
+\]
+
+one would need an institutional decision rule connecting high switching cost to continued reliance on AI.
+
+---
+
+## Final conclusion
+
+The corrected conclusion is:
+
+\[
+A3+A4
+\]
+
+prove current AI embedding in four critical sectors and prove that continued active use increases integration depth and switching cost.
+
+They do **not** prove:
+
+\[
+\text{budget-prohibitive switching cost},
+\]
+
+\[
+\text{practical infeasibility of removal},
+\]
+
+or
+
+\[
+\text{irrevocable AI-dependence}.
+\]
+
+The original \(C4\) is therefore stronger than what follows from \(A3\) and \(A4\) alone. The repaired Step \(4\) explicitly accounts for feasibility, critical-function preservation, acceptable degradation, and acceptable cost, which fixes the justification gap identified in the bug report.

@@ -1,0 +1,25 @@
+Bug report:
+
+**Anchor:** global  
+**Location:** “A rigorously provable replacement is the following.”  
+**Description:** **Critical Error:** The solution replaces the stated theorem C3 with a weaker theorem instead of proving C3. Even if the replacement theorem is true, proving it does not establish the original theorem as stated.
+
+**Anchor:** global  
+**Location:** “A5 clearly supports qualitative, not-merely-faster breakthroughs for AlphaFold2 and GNoME.”  
+**Description:** **Justification Gap:** The solution asserts that A5 “clearly” supports the qualitative/not-merely-faster characterization, but A5 does not define “qualitative breakthrough” or provide an explicit criterion showing that solving a long-open problem or producing many novel structures is sufficient for that classification.
+
+**Anchor:** global  
+**Location:** “A5 documents AI-enabled scientific gains in four distinct domains: biology, pharmacology, chemistry/materials science, and mathematics.”  
+**Description:** **Justification Gap:** The classification of the four examples into these domains, and the claim that the domains are distinct, is not explicitly established from A5. The solution relies on background knowledge rather than stated definitions or assumptions.
+
+**Anchor:** global  
+**Location:** “Therefore the result was not merely a faster execution of an already routine human procedure: it resolved a long-open scientific problem.”  
+**Description:** **Justification Gap:** The inference from “long-open scientific problem” to “not merely faster execution of an already routine human procedure” is plausible but not explicitly justified. The solution does not state or prove a principle connecting long-open status to non-routine or qualitative character.
+
+**Anchor:** global  
+**Location:** “The corresponding discovery-count ratio is \[\frac{2{,}200{,}000}{20{,}000}=110>100.\]”  
+**Description:** **Justification Gap:** A5 says the prior human total was approximately \(20{,}000\), not exactly \(20{,}000\). Treating the denominator as exact to derive an exact ratio of \(110\) is not justified, even though A5 separately states a \(>100\times\) ratio.
+
+**Anchor:** global  
+**Location:** “because the AI-discovered set exceeds the total prior human experimental total by more than two orders of magnitude, this is not merely a faster reproduction of the prior human corpus. It is a qualitative expansion of the known space of stable crystal structures.”  
+**Description:** **Justification Gap:** The solution does not explicitly justify why exceeding the prior corpus by more than two orders of magnitude entails “not merely faster reproduction” or “qualitative expansion.” This relies on unstated interpretive criteria for qualitative scientific expansion.

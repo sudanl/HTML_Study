@@ -1,0 +1,138 @@
+BUGS REPORT — proof/section_4_sol_v1.tex
+Problem statement: proof/section_4_structural_unavoidability.tex
+Verifier run: standard (single run)
+Verdict: ISSUES_FOUND — 7 justification gaps, 0 critical logical errors in the narrow sense
+        but the proof FAILS to establish sub-claims (ii), (iii), and (iv) of Theorem C4.
+
+════════════════════════════════════════════════════════════════════
+SUMMARY OF ISSUES (ordered by severity)
+════════════════════════════════════════════════════════════════════
+
+ISSUE 1 — Sub-claim (i) partially discharged; (ii), (iii), (iv) not proven [CRITICAL]
+  The solution argues that C4 cannot be proved from A3+A4, then offers a
+  "weakened theorem" instead. That is not a proof of Theorem C4. The task
+  requires establishing all four sub-claims (i)-(iv). The solution establishes
+  only (i) (AI is embedded in four critical systems). Sub-claims (ii), (iii),
+  and (iv) are explicitly left unproved. The solution substitutes a
+  meta-argument ("C4 is unprovable from A3+A4") for an actual proof, which
+  does not satisfy the problem statement.
+
+ISSUE 2 — "Strongest defensible conclusion" claim is unjustified [HIGH]
+  Location: "The strongest defensible conclusion is a weaker one" and
+  "What follows rigorously is only this:"
+  The solution shows that C4(ii), C4(iii), and C4(iv) do not follow from A3+A4,
+  but it does not demonstrate that the stated weakened theorem is the STRONGEST
+  or ONLY conclusion derivable. Other intermediate conclusions might also follow.
+  Claiming maximality of the weakened theorem requires its own proof.
+
+ISSUE 3 — S_X introduced without definition [HIGH]
+  Location: "S_X(d_X) >= c d_X^2"
+  Assumption A4 defines a single switching-cost function S(d). The solution
+  introduces system-specific notation S_X without defining its relationship to S
+  and without justifying that the same constants c and d_0 apply uniformly across
+  all four systems E, H, F, D. This is an undefined term used in a key step.
+
+ISSUE 4 — Omega lower bound does not imply monotonicity [HIGH]
+  Location: "greater integration depth => higher switching cost ... partially
+  supported by A4, though only as a lower-bound statement: S(d) >= c d^2"
+  The solution correctly notes the implication is "partially" supported, but the
+  analysis stops there. S(d) = Omega(d^2) does not imply S is monotone
+  increasing: a function can satisfy the lower bound while decreasing between
+  specific depths. No monotonicity assumption is stated or justified, yet the
+  solution uses the implication "greater depth => higher cost" as if it were
+  established.
+
+ISSUE 5 — Countermodel does not fully satisfy A4 [MEDIUM]
+  Location: "For each X in S, define d_X = 100 ... S_X(d) = d^2. Then
+  S_X(d) = Omega(d^2), so A4 is satisfied."
+  Assumption A4 contains two clauses: (a) S(d) = Omega(d^2), and (b) for
+  operationally critical systems, deep integration (d >> 1) is the norm.
+  The solution checks only clause (a). It does not justify that d_X = 100
+  satisfies the informal condition d >> 1, nor that the uniform assignment of
+  depth 100 to all four systems satisfies the "norm" clause. A4 may not be
+  fully satisfied by this construction.
+
+ISSUE 6 — "Prohibitive" is undefined; falsification of C4(ii) is informal [MEDIUM]
+  Location: "This cost is not prohibitive relative to B under any ordinary
+  meaning of 'prohibitive.'" and "Thus switching cost is not prohibitive
+  relative to annual budget. This falsifies C4(ii)."
+  The term "prohibitive" appears in C4(ii) but is never formally defined. The
+  solution appeals to "ordinary meaning," which is not a rigorous justification.
+  Without a formal definition or threshold for "prohibitive," the countermodel
+  does not rigorously falsify C4(ii) — it merely shows A3+A4 do not supply a
+  budget comparison. The stronger claim that C4(ii) is false in the constructed
+  model remains unestablished.
+
+ISSUE 7 — "Irrevocably AI-dependent" is undefined; falsification of C4(iv) is informal [MEDIUM]
+  Location: "Since 10^4 << 10^12, removal is feasible in this model. Hence the
+  systems are not irrevocably AI-dependent. This falsifies C4(iv)."
+  "Irrevocably AI-dependent" is not formally defined. The argument assumes that
+  (a) paying the switching cost is sufficient for successful removal, and (b)
+  feasibility is established solely by cost being smaller than budget. Neither
+  assumption is stated or justified. The claimed falsification of C4(iv) is
+  therefore not fully rigorous.
+
+════════════════════════════════════════════════════════════════════
+CHECKLIST AGAINST LEAD'S FIVE QUESTIONS
+════════════════════════════════════════════════════════════════════
+
+1. Does the proof establish all four sub-claims (i)-(iv) of Theorem C4?
+   NO. Sub-claim (i) is established. Sub-claims (ii), (iii), and (iv) are
+   deliberately left unproved; the solution argues they cannot be proved from
+   A3+A4 alone. This does not constitute a proof of Theorem C4.
+
+2. Are all estimates and order-of-magnitude figures internally consistent?
+   The numerical figures (d=100, S=10^4, B=10^12, ratio=10^-8) are internally
+   consistent within the countermodel. No arithmetic errors detected.
+
+3. Is the self-reinforcing feedback loop argument logically valid?
+   NO. The solution correctly identifies that A4's lower bound on S(d) does not
+   establish monotonicity (Issue 4). The first implication (more usage => deeper
+   integration) and the last implication (higher cost => continued use) are both
+   absent from A3 and A4. The feedback loop is not logically valid from those
+   assumptions alone.
+
+4. Does the proof use ONLY Assumptions A3 and A4 (no forward references to
+   C1/C2/C3)?
+   YES — no forward references to C1, C2, or C3 were detected. The solution
+   confines itself to A3 and A4.
+
+5. Are there any gaps where "it is clear" or "obviously" substitutes for actual
+   argument?
+   The phrases "it is clear" and "obviously" do not appear verbatim. However,
+   equivalent informal substitutions occur:
+   - "under any ordinary meaning of 'prohibitive'" (Issue 6)
+   - "removal is feasible in this model" asserted without formal criterion (Issue 7)
+   - Monotonicity of S(d) assumed without proof (Issue 4)
+
+════════════════════════════════════════════════════════════════════
+APPENDIX — FULL VERIFIER OUTPUT
+════════════════════════════════════════════════════════════════════
+
+Anchor: global
+Location: "The strongest defensible conclusion is a weaker one" and "What follows rigorously is only this:"
+Description: Justification Gap — The solution does not justify the maximality claim. Showing that the particular claims C4(ii), C4(iii), and C4(iv) do not follow does not establish that the stated weakened conclusion is the strongest or only conclusion derivable from A3 and A4.
+
+Anchor: global
+Location: "Therefore, for any listed system X in S whose integration depth is d_X >= d_0, one may conclude S_X(d_X) >= c d_X^2."
+Description: Justification Gap — S_X is introduced without definition. Assumption A4 states a switching-cost function S(d), but the solution does not explicitly define the relationship between S and the system-specific notation S_X, nor does it justify that the same constants c, d_0 apply uniformly to all such system-specific costs.
+
+Anchor: global
+Location: "The middle implication, greater integration depth => higher switching cost, is partially supported by A4, though only as a lower-bound statement: S(d) >= c d^2"
+Description: Justification Gap — An asymptotic lower bound S(d)=Omega(d^2) does not by itself establish that actual switching cost is monotone increasing in d. A function can satisfy the lower bound while decreasing between particular depths. The solution does not state or justify any monotonicity assumption.
+
+Anchor: global
+Location: "For each X in S, define integration depth d_X=100. Define switching cost by S_X(d)=d^2. Then S_X(d)=Omega(d^2), so A4 is satisfied."
+Description: Justification Gap — This checks only the Omega(d^2) part of A4. Assumption A4 also states that for operationally critical systems, deep integration (d >> 1) is the norm. The solution does not explicitly justify that d_X=100 satisfies the undefined condition d>>1, nor that assigning this depth to all four systems satisfies the "norm" clause.
+
+Anchor: global
+Location: "This cost is not prohibitive relative to B under any ordinary meaning of 'prohibitive.'"
+Description: Justification Gap — The term "prohibitive" is not formally defined, and appealing to "ordinary meaning" is not a rigorous justification. The numerical ratio 10^{-8} suggests smallness, but without a specified threshold or definition, the conclusion that the cost is not prohibitive is not formally established.
+
+Anchor: global
+Location: "Thus switching cost is not prohibitive relative to annual budget. This falsifies C4(ii)."
+Description: Justification Gap — Because "prohibitive" and "practically infeasible" are not formally defined, the countermodel does not rigorously falsify C4(ii). The solution shows that A3 and A4 do not supply the needed budget comparison, but the stronger claim that the constructed model falsifies C4(ii) requires a formal interpretation of those qualitative terms.
+
+Anchor: global
+Location: "Finally, suppose each system can remove AI by paying the switching cost 10^4. Since 10^4 << 10^12, removal is feasible in this model. Hence the systems are not irrevocably AI-dependent. This falsifies C4(iv)."
+Description: Justification Gap — Feasibility is asserted from the cost being much smaller than the budget, but no formal criterion for feasibility is supplied. The argument also assumes that paying the switching cost is sufficient for successful removal, and "irrevocably AI-dependent" is not formally defined. Therefore the claimed falsification of C4(iv) is not fully justified.

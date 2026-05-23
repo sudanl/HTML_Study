@@ -1,0 +1,213 @@
+The bug report is right that the earlier solution did **not** prove C3 as stated. The correct repair is not to pretend that the missing implications follow, but to state precisely what follows from A5 and what does not.
+
+Below is an improved, logically justified solution.
+
+---
+
+## Improved solution
+
+\[
+\boxed{\text{C3, as stated, is not derivable from A5 alone.}}
+\]
+
+Let the four documented cases in A5 be denoted by
+
+\[
+\alpha=\text{AlphaFold2},\qquad
+d=\text{AI drug discovery},\qquad
+g=\text{GNoME},\qquad
+\ell=\text{Lean4 AI proof assistance}.
+\]
+
+Clause (ii) of C3 asserts that the time-to-discovery speedup is at least \(2\times\) in **each** documented case, and exceeds \(100\times\) in at least one case. Thus, if \(S_x\) denotes the time-to-discovery speedup in case \(x\), clause (ii) requires
+
+\[
+S_\alpha\ge 2,\qquad S_d\ge 2,\qquad S_g\ge 2,\qquad S_\ell\ge 2,
+\]
+
+and also
+
+\[
+\max\{S_\alpha,S_d,S_g,S_\ell\}>100.
+\]
+
+A5 supplies enough information to prove this only for the drug-discovery case. In that case, the AI-assisted time is \(18\) months, while the historical human-only average is \(4\)--\(6\) years. Since
+
+\[
+4\text{ years}=48\text{ months},
+\]
+
+the smallest speedup supported by A5 is
+
+\[
+S_d\ge \frac{48}{18}=\frac{8}{3}>2.
+\]
+
+So A5 proves
+
+\[
+S_d>2.
+\]
+
+However, A5 does **not** provide corresponding time-to-discovery data for the other three cases:
+
+1. For AlphaFold2, A5 says the protein-structure-prediction problem had been open for \(50\) years and was solved to near-experimental accuracy, but it gives no AI elapsed time \(T_\alpha^{AI}\). Therefore no numerical speedup
+
+   \[
+   S_\alpha=\frac{T_\alpha^{\text{human}}}{T_\alpha^{AI}}
+   \]
+
+   can be computed from A5 alone.
+
+2. For GNoME, A5 gives a discovery-count ratio exceeding \(100\times\). It does **not** give a time-to-discovery speedup. The statement
+
+   \[
+   \text{GNoME discovered }2.2\text{ million stable crystal structures}
+   \]
+
+   compared with approximately \(20{,}000\) prior human experimental discoveries supports a scale ratio, not a time ratio. Moreover, because the prior value is stated as approximately \(20{,}000\), one should not treat
+
+   \[
+   \frac{2{,}200{,}000}{20{,}000}=110
+   \]
+
+   as an exact derivation. The rigorous conclusion is the one explicitly stated in A5:
+
+   \[
+   \text{GNoME ratio}>100\times.
+   \]
+
+3. For Lean4 AI proof assistance, A5 says that AI-assisted proof search produced novel proof strategies for open combinatorics problems and that such tasks previously required years of specialist effort. But A5 gives no AI-assisted elapsed time. Therefore no numerical speedup \(S_\ell\) can be computed.
+
+Thus A5 proves one explicit time-speedup claim,
+
+\[
+S_d>2,
+\]
+
+and one explicit discovery-scale claim,
+
+\[
+R_g>100,
+\]
+
+where \(R_g\) is a count ratio, not a time-to-discovery speedup. It does not prove
+
+\[
+S_x\ge 2
+\]
+
+for every documented case \(x\), nor does it prove that some time-speedup \(S_x\) exceeds \(100\).
+
+Therefore clause (ii) of C3 does not follow from A5.
+
+Since a theorem requiring clauses (i), (ii), and (iii) cannot be proved if clause (ii) is not derivable, C3 as stated is not provable from A5 alone.
+
+---
+
+## About clause (i)
+
+Clause (i) also requires care. It says that in at least three independent scientific domains, AI achieved results
+
+\[
+\text{strictly beyond pre-AI human capability, not merely faster}.
+\]
+
+A5 supports a weaker, record-based statement: in several cases, AI produced results that had not previously been achieved by the human scientific record described in A5. For example:
+
+- AlphaFold2 solved a problem that A5 says had been open for \(50\) years.
+- GNoME produced \(2.2\) million novel stable crystal structures and exceeded the prior human experimental corpus by more than \(100\times\).
+- Lean4 AI produced novel proof strategies for open combinatorics problems.
+
+But “not previously achieved by humans” is weaker than “strictly beyond pre-AI human capability.” The latter could mean that pre-AI humans could not have achieved the result at all, even with more time or resources. A5 does not establish that stronger modal claim.
+
+So clause (i) is provable only under an additional interpretive convention, such as:
+
+\[
+\text{“beyond pre-AI human capability” means “beyond the pre-AI human record described in A5.”}
+\]
+
+Under that operational reading, AlphaFold2, GNoME, and Lean4 AI can support clause (i). Under the stronger literal reading, A5 is insufficient.
+
+---
+
+## A corrected theorem actually provable from A5
+
+A theorem that is genuinely derivable from A5 is the following.
+
+```tex
+\begin{theorem}[Scientific Force Multiplication, Derivable Form]
+  Under Assumption~A5, AI systems constitute a cross-domain scientific
+  force multiplier in the following precise sense:
+  \begin{enumerate}
+    \item[(a)] A5 documents AI-driven scientific gains in four explicitly
+      named problem areas: protein-structure prediction, drug discovery,
+      stable crystal-structure discovery, and formal proof search in
+      combinatorics.
+    \item[(b)] At least three of the documented cases produced results not
+      merely described as faster executions of an already completed prior
+      human result: AlphaFold2 solved a problem open for $50$ years, GNoME
+      produced novel stable crystal structures exceeding the prior human
+      experimental corpus by a stated ratio of $>100\times$, and Lean4 AI
+      produced novel proof strategies for open combinatorics problems.
+    \item[(c)] A5 documents a time-to-discovery speedup greater than
+      $2\times$ in the drug-discovery case.
+    \item[(d)] A5 documents a discovery-count multiplication greater than
+      $100\times$ in the GNoME case.
+  \end{enumerate}
+\end{theorem}
+```
+
+### Proof
+
+By A5, the four documented AI-driven results concern the following explicitly named problem areas:
+
+\[
+\text{protein-structure prediction},
+\]
+
+\[
+\text{drug discovery},
+\]
+
+\[
+\text{stable crystal-structure discovery},
+\]
+
+and
+
+\[
+\text{formal proof search in combinatorics}.
+\]
+
+These are four distinct problem descriptions appearing directly in A5. Therefore the documented gains are not confined to a single problem area.
+
+For AlphaFold2, A5 states that protein-structure prediction was a problem open for \(50\) years and that AlphaFold2 solved it to near-experimental accuracy. A result that solves a previously open problem is not merely a faster repetition of an already completed solution, because the prior human record described in A5 did not contain such a solution.
+
+For GNoME, A5 states that it discovered \(2.2\) million novel stable crystal structures and that this surpassed the total of all prior human experimental discovery by a stated ratio of more than \(100\times\). Since the structures are described as novel, the result is not merely a faster reproduction of already known structures. Also, because A5 itself states the ratio as
+
+\[
+>100\times,
+\]
+
+we may conclude directly that the discovery-count multiplication exceeds \(100\times\). We need not treat the approximate value \(20{,}000\) as exact.
+
+For Lean4 AI proof assistance, A5 states that AI-assisted proof search produced novel proof strategies for open combinatorics problems. Since the strategies are described as novel and the problems as open, this again is not merely a faster execution of an already recorded prior solution.
+
+For the drug-discovery case, A5 states that an AI-designed drug candidate reached IND approval in \(18\) months, whereas the historical human-only average was \(4\)--\(6\) years. The smallest stated human-only baseline is \(4\) years, or \(48\) months. Hence the minimum speedup supported by A5 is
+
+\[
+\frac{48}{18}=\frac{8}{3}>2.
+\]
+
+Thus A5 proves a time-to-discovery speedup greater than \(2\times\) in the drug-discovery case.
+
+Combining these points, A5 establishes cross-domain scientific force multiplication, including one rigorously quantified time-speedup exceeding \(2\times\) and one rigorously stated discovery-count multiplication exceeding \(100\times\). However, without additional time-to-discovery data, it does not establish C3(ii) as originally written. \(\square\)
+
+---
+
+So the corrected conclusion is:
+
+\[
+\boxed{\text{A5 supports a strong cross-domain force-multiplication claim, but not C3 exactly as stated.}}
+\]

@@ -1,0 +1,384 @@
+I cannot rigorously prove the theorem exactly as stated from $A1$ alone. The quantitative part of $A1$ proves a strong monotonic improvement result, but it does **not** by itself prove an invariant “accelerating capability rate” or an “economically dominated” conclusion. Those require extra definitions or economic assumptions.
+
+Below is the rigorous derivation of what $A1$ actually implies, followed by the precise gap.
+
+---
+
+## 1. Direct consequence of $A1$
+
+Let the cost per FLOP at time $t$ be
+
+\[
+k(t)=k(t_0)r^{-(t-t_0)},
+\]
+
+where $r>1$; in the statement, $r\approx 1.5$. Fix a budget $B>0$. The maximum amount of compute purchasable at time $t$ is
+
+\[
+C_B(t)=\frac{B}{k(t)}
+      =\frac{B}{k(t_0)}r^{t-t_0}.
+\]
+
+Since $L(C)=(C_0/C)^\alpha$ with $\alpha>0$, the best loss achievable within budget $B$ at time $t$ is
+
+\[
+L_B(t)
+=
+\left(\frac{C_0}{C_B(t)}\right)^\alpha
+=
+\left(\frac{C_0 k(t_0)}{B}\right)^\alpha r^{-\alpha(t-t_0)}.
+\]
+
+Let
+
+\[
+A=\left(\frac{C_0 k(t_0)}{B}\right)^\alpha>0,
+\qquad
+\beta=\alpha\log r>0.
+\]
+
+Then
+
+\[
+L_B(t)=Ae^{-\beta(t-t_0)}.
+\]
+
+Therefore,
+
+\[
+\frac{dL_B}{dt}
+=
+-\beta Ae^{-\beta(t-t_0)}
+=
+-\beta L_B(t)
+<0.
+\]
+
+So the achievable loss strictly decreases over time.
+
+Thus, a precise version of claim $(i)$ is provable:
+
+\[
+t_2>t_1
+\quad\Longrightarrow\quad
+L_B(t_2)<L_B(t_1).
+\]
+
+Equivalently, for any performance ordering in which lower cross-entropy loss is better, the best AI system purchasable under fixed budget $B$ strictly improves over time.
+
+---
+
+## 2. Why claim $(ii)$ is not determined by $A1$
+
+Claim $(ii)$ says:
+
+> The rate of capability gain per unit calendar time is non-decreasing.
+
+But $A1$ defines loss $L$, not a unique scalar “capability” variable. Acceleration depends on how capability is measured.
+
+For example, define a higher-is-better capability score by
+
+\[
+\kappa_1(t)=-L_B(t).
+\]
+
+Then
+
+\[
+\kappa_1'(t)
+=
+-\frac{dL_B}{dt}
+=
+\beta L_B(t)>0,
+\]
+
+so capability increases. But
+
+\[
+\kappa_1''(t)
+=
+\beta \frac{dL_B}{dt}
+=
+-\beta^2L_B(t)<0.
+\]
+
+Thus, under the legitimate capability index $\kappa_1=-L_B$, the rate of capability gain is strictly decreasing, not non-decreasing.
+
+On the other hand, if one defines capability as inverse loss,
+
+\[
+\kappa_2(t)=\frac{1}{L_B(t)},
+\]
+
+then
+
+\[
+\kappa_2(t)=A^{-1}e^{\beta(t-t_0)},
+\]
+
+so
+
+\[
+\kappa_2'(t)=\beta \kappa_2(t)>0,
+\qquad
+\kappa_2''(t)=\beta^2\kappa_2(t)>0.
+\]
+
+Under this different capability index, capability growth is accelerating.
+
+Also, if one defines capability as negative log-loss,
+
+\[
+\kappa_3(t)=-\log L_B(t),
+\]
+
+then
+
+\[
+\kappa_3(t)
+=
+-\log A+\beta(t-t_0),
+\]
+
+so
+
+\[
+\kappa_3'(t)=\beta,
+\qquad
+\kappa_3''(t)=0.
+\]
+
+Under this capability index, the rate is constant.
+
+Therefore, $A1$ proves strict improvement in loss and a constant proportional rate of loss reduction:
+
+\[
+-\frac{d}{dt}\log L_B(t)=\beta=\alpha\log r.
+\]
+
+But it does **not** prove an invariant, definition-independent acceleration claim. Claim $(ii)$ is therefore not derivable from $A1$ alone.
+
+---
+
+## 3. Conditional “capability deficit” result
+
+One can define a capability deficit, but the definition matters.
+
+Suppose a pre-AI baseline has fixed loss
+
+\[
+L_{\mathrm{pre}}>0.
+\]
+
+A natural loss-based deficit of the pre-AI system relative to the AI system is
+
+\[
+D_L(t)=L_{\mathrm{pre}}-L_B(t).
+\]
+
+Then
+
+\[
+D_L'(t)
+=
+-\frac{dL_B}{dt}
+=
+\beta L_B(t)>0.
+\]
+
+So, under the extra assumption that the pre-AI baseline has constant loss $L_{\mathrm{pre}}$, the AI system’s loss advantage grows over time.
+
+However,
+
+\[
+D_L''(t)
+=
+\beta \frac{dL_B}{dt}
+=
+-\beta^2L_B(t)<0.
+\]
+
+Thus the loss-based deficit grows, but its growth rate decreases.
+
+If instead one defines capability by inverse loss,
+
+\[
+\kappa(t)=\frac{1}{L(t)},
+\]
+
+and defines the capability deficit by
+
+\[
+D_\kappa(t)
+=
+\kappa_B(t)-\kappa_{\mathrm{pre}},
+\]
+
+where
+
+\[
+\kappa_B(t)=\frac{1}{L_B(t)}
+\]
+
+and $\kappa_{\mathrm{pre}}$ is constant, then
+
+\[
+D_\kappa'(t)=\beta \kappa_B(t)>0,
+\]
+
+and
+
+\[
+D_\kappa''(t)=\beta^2\kappa_B(t)>0.
+\]
+
+So with this particular definition, the capability deficit grows at an accelerating rate. But this conclusion depends on the chosen capability index.
+
+---
+
+## 4. Why claim $(iii)$ is not provable from $A1$
+
+Claim $(iii)$ says that reverting to a pre-AI baseline is economically dominated. But economic dominance is a statement about payoffs, costs, preferences, switching costs, risk, and organizational objectives. None of these are specified in $A1$.
+
+A standard dominance definition would be something like this:
+
+A strategy $s_1$ economically dominates a strategy $s_0$ at time $t$ if
+
+\[
+\Pi(s_1,t)\geq \Pi(s_0,t)
+\]
+
+in all relevant states, with strict inequality in at least one relevant state, where $\Pi$ is an economic payoff function.
+
+But $A1$ gives no payoff function $\Pi$.
+
+Indeed, one can construct a model satisfying $A1$ in which pre-AI operation is economically preferred. Let the strategies be
+
+\[
+s_{\mathrm{AI}}
+\quad\text{and}\quad
+s_{\mathrm{pre}}.
+\]
+
+Suppose the organization’s payoff is purely cost-based:
+
+\[
+\Pi(s,t)=-\operatorname{Cost}(s,t).
+\]
+
+Let
+
+\[
+\operatorname{Cost}(s_{\mathrm{pre}},t)=0,
+\qquad
+\operatorname{Cost}(s_{\mathrm{AI}},t)=B>0.
+\]
+
+Then
+
+\[
+\Pi(s_{\mathrm{pre}},t)=0
+>
+-B
+=
+\Pi(s_{\mathrm{AI}},t).
+\]
+
+So in this model, the pre-AI strategy strictly economically dominates the AI strategy, even though $A1$ remains true. Therefore, $A1$ alone cannot imply claim $(iii)$.
+
+To prove claim $(iii)$, one would need an additional economic assumption, for example:
+
+\[
+\Pi(s,t)=V(\kappa(s,t))-\operatorname{Cost}(s,t),
+\]
+
+where $V$ is strictly increasing in capability $\kappa$, and where the AI and pre-AI systems are compared under equal or appropriately bounded costs. Without such an assumption, the economic conclusion does not follow.
+
+---
+
+## 5. A rigorously provable replacement theorem
+
+A theorem that **does** follow from $A1$, together with explicit added definitions, is the following.
+
+### Proposition
+
+Assume $A1$ and fix $B>0$. Define the effective AI capability index by
+
+\[
+\kappa_B(t)=\frac{1}{L_B(t)}.
+\]
+
+Then over the planning horizon $[t_0,t_0+10]$,
+
+\[
+\kappa_B(t)
+=
+\left(\frac{B}{C_0k(t_0)}\right)^\alpha r^{\alpha(t-t_0)}.
+\]
+
+Hence
+
+\[
+\kappa_B'(t)
+=
+\alpha\log(r)\,\kappa_B(t)>0,
+\]
+
+and
+
+\[
+\kappa_B''(t)
+=
+\alpha^2(\log r)^2\kappa_B(t)>0.
+\]
+
+Therefore, under the specific definition $\kappa=1/L$, effective AI capability grows strictly and accelerates.
+
+If additionally a pre-AI baseline has constant capability
+
+\[
+\kappa_{\mathrm{pre}}>0,
+\]
+
+and if the capability deficit is defined by
+
+\[
+D(t)=\kappa_B(t)-\kappa_{\mathrm{pre}},
+\]
+
+then
+
+\[
+D'(t)=\kappa_B'(t)>0,
+\qquad
+D''(t)=\kappa_B''(t)>0.
+\]
+
+So the capability deficit grows at an accelerating rate.
+
+Finally, if one adds the economic assumption that, at equal cost, higher $\kappa$ strictly increases organizational payoff, then whenever
+
+\[
+\kappa_B(t)>\kappa_{\mathrm{pre}},
+\]
+
+the pre-AI baseline is economically dominated by AI adoption at time $t$.
+
+---
+
+## Conclusion
+
+From $A1$ alone, one can rigorously prove:
+
+\[
+L_B(t)=
+\left(\frac{C_0k(t_0)}{B}\right)^\alpha r^{-\alpha(t-t_0)},
+\]
+
+so fixed-budget AI loss strictly decreases over time. This proves a precise version of claim $(i)$.
+
+However, claim $(ii)$ is not well-defined without choosing a capability index, and different legitimate choices give decreasing, constant, or increasing rates of gain.
+
+Claim $(iii)$ is not derivable from $A1$ because economic dominance requires additional assumptions about payoffs, costs, preferences, and adoption constraints.
+
+Therefore, the stated theorem $C1$ cannot be rigorously proved using only the quantitative content of $A1$.

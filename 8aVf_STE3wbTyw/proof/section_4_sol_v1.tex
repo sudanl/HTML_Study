@@ -1,0 +1,468 @@
+A fully rigorous proof of \(C4\) **cannot be derived from \(A3\) and \(A4\) alone**. The strongest defensible conclusion is a weaker one: \(A3\) gives current AI embedding in four listed critical sectors, and \(A4\) gives a super-linear lower bound on switching cost as a function of integration depth. But \(A3\) and \(A4\) do **not** provide enough information to prove that removal costs are prohibitive relative to budgets, that usage necessarily increases integration depth, or that AI dependence is irrevocable.
+
+Below is a rigorous analysis.
+
+---
+
+## Proposition: What \(A3\) and \(A4\) Actually Entail
+
+Let the four systems listed in \(A3\) be denoted by
+
+\[
+\mathcal{S}
+=
+\{E,H,F,D\},
+\]
+
+where \(E\) denotes energy infrastructure, \(H\) denotes healthcare, \(F\) denotes fiscal systems, and \(D\) denotes education.
+
+By \(A3\), for each system \(X \in \mathcal{S}\), AI is operationally embedded in \(X\), and \(X\) is operationally critical. Thus \(A3\) directly entails
+
+\[
+|\mathcal{S}| = 4
+\]
+
+and
+
+\[
+\forall X \in \mathcal{S}, \quad X \text{ is critical and AI is embedded in } X.
+\]
+
+By \(A4\), if AI is removed from a pipeline at integration depth \(d\), the switching cost satisfies
+
+\[
+S(d) = \Omega(d^2).
+\]
+
+Equivalently, there exist constants \(c>0\) and \(d_0>0\) such that for all \(d \ge d_0\),
+
+\[
+S(d) \ge c d^2.
+\]
+
+Therefore, for any listed system \(X \in \mathcal{S}\) whose integration depth is \(d_X \ge d_0\), one may conclude
+
+\[
+S_X(d_X) \ge c d_X^2.
+\]
+
+If the phrase in \(A4\) saying that deep integration is “the norm” for operationally critical systems is interpreted as applying to each of the four systems in \(A3\), then one may additionally conclude that each \(d_X\) is large. Under that interpretation,
+
+\[
+\forall X \in \mathcal{S}, \quad d_X \gg 1
+\]
+
+and hence
+
+\[
+\forall X \in \mathcal{S}, \quad S_X(d_X) \ge c d_X^2.
+\]
+
+This proves only the following weakened statement:
+
+> AI is embedded in four listed critical societal systems, and removing it from a sufficiently deeply integrated pipeline in any such system has switching cost bounded below quadratically in the integration depth.
+
+That is not enough to prove \(C4(ii)\), \(C4(iii)\), or \(C4(iv)\).
+
+---
+
+## Why \(C4(ii)\) Does Not Follow
+
+Claim \(C4(ii)\) says:
+
+\[
+\text{Removing AI from any listed system is prohibitive relative to that system's annual operating budget.}
+\]
+
+But neither \(A3\) nor \(A4\) gives annual operating budgets. Let \(B_X\) denote the annual operating budget of system \(X\). To prove \(C4(ii)\), one would need some inequality such as
+
+\[
+S_X(d_X) \ge \alpha B_X
+\]
+
+for some threshold \(\alpha>0\) representing “prohibitive.” No such threshold \(\alpha\), budget \(B_X\), or comparison between \(S_X(d_X)\) and \(B_X\) is supplied.
+
+The asymptotic lower bound
+
+\[
+S(d)=\Omega(d^2)
+\]
+
+does not imply that \(S(d)\) is large relative to any external budget \(B\). For example, the function
+
+\[
+S(d)=d^2
+\]
+
+satisfies
+
+\[
+S(d)=\Omega(d^2).
+\]
+
+If a deeply integrated system has
+
+\[
+d=100,
+\]
+
+then
+
+\[
+S(d)=10{,}000.
+\]
+
+But if the annual operating budget is
+
+\[
+B=10^{12},
+\]
+
+then
+
+\[
+\frac{S(d)}{B}
+=
+\frac{10^4}{10^{12}}
+=
+10^{-8}.
+\]
+
+This cost is not prohibitive relative to \(B\) under any ordinary meaning of “prohibitive.” Thus \(A4\) is compatible with cases where switching costs are quadratic in \(d\) but still negligible relative to the relevant system budget.
+
+Therefore \(C4(ii)\) is not logically entailed by \(A3\) and \(A4\).
+
+---
+
+## Why \(C4(iii)\) Does Not Follow
+
+Claim \(C4(iii)\) says:
+
+\[
+\text{More usage} \Rightarrow \text{greater integration depth} \Rightarrow \text{higher switching cost} \Rightarrow \text{continued use}.
+\]
+
+The middle implication,
+
+\[
+\text{greater integration depth} \Rightarrow \text{higher switching cost},
+\]
+
+is partially supported by \(A4\), though only as a lower-bound statement:
+
+\[
+S(d) \ge c d^2
+\]
+
+for sufficiently large \(d\). But the first and last implications are not supplied by \(A3\) or \(A4\).
+
+In particular, \(A3\) and \(A4\) do not assert that usage growth causes integration depth growth. One can construct a model satisfying both assumptions in which usage grows while integration depth remains constant.
+
+Let usage in system \(X\) at time \(t\) be
+
+\[
+u_X(t)=t,
+\]
+
+so usage grows over time. But let the integration depth remain fixed:
+
+\[
+d_X(t)=100.
+\]
+
+Let switching cost be
+
+\[
+S_X(d)=d^2.
+\]
+
+Then
+
+\[
+S_X(d_X(t))=S_X(100)=10{,}000
+\]
+
+for all \(t\). Thus usage increases, but integration depth and switching cost do not increase. This model is compatible with \(A3\) and \(A4\), so \(A3\) and \(A4\) do not imply the feedback loop claimed in \(C4(iii)\).
+
+Therefore \(C4(iii)\) is not derivable without an additional monotonicity assumption such as
+
+\[
+u_X(t_2)>u_X(t_1)
+\implies
+d_X(t_2)>d_X(t_1),
+\]
+
+or at least
+
+\[
+u_X(t_2)>u_X(t_1)
+\implies
+d_X(t_2)\ge d_X(t_1).
+\]
+
+No such assumption appears in \(A3\) or \(A4\).
+
+---
+
+## Why \(C4(iv)\) Does Not Follow
+
+Claim \(C4(iv)\) says:
+
+\[
+\text{AI's role is structurally unavoidable and societal infrastructure is irrevocably AI-dependent.}
+\]
+
+This is stronger than \(C4(ii)\) and \(C4(iii)\). Since \(C4(ii)\) and \(C4(iii)\) are not entailed, \(C4(iv)\) cannot be rigorously inferred from them.
+
+Moreover, even if switching costs were high, “high cost” does not imply “irrevocability.” To prove irrevocability, one would need something like:
+
+\[
+\forall \text{ feasible transition paths } P,\quad \operatorname{Cost}(P) > \text{available resources},
+\]
+
+or
+
+\[
+\text{no non-AI substitute can maintain the critical function at acceptable degradation}.
+\]
+
+Neither \(A3\) nor \(A4\) states that no non-AI substitute exists. Neither assumption rules out gradual migration, redundancy planning, regulatory intervention, emergency funding, open-source replacement systems, or manual fallback procedures.
+
+Thus \(A3\) and \(A4\) may support the weaker conclusion that AI removal could be costly in deeply integrated systems, but they do not prove that removal is impossible, infeasible, or structurally unavoidable.
+
+---
+
+## Explicit Countermodel to the Full Theorem
+
+Here is a concrete model satisfying \(A3\) and \(A4\) but falsifying \(C4(ii)\), \(C4(iii)\), and \(C4(iv)\).
+
+Let
+
+\[
+\mathcal{S}=\{E,H,F,D\}.
+\]
+
+Assume each system in \(\mathcal{S}\) is critical and has AI embedded, exactly as stated in \(A3\).
+
+For each \(X \in \mathcal{S}\), define integration depth
+
+\[
+d_X=100.
+\]
+
+Define switching cost by
+
+\[
+S_X(d)=d^2.
+\]
+
+Then
+
+\[
+S_X(d)=\Omega(d^2),
+\]
+
+so \(A4\) is satisfied.
+
+Now assign each system annual budget
+
+\[
+B_X=10^{12}.
+\]
+
+Then for each \(X \in \mathcal{S}\),
+
+\[
+S_X(d_X)=100^2=10^4,
+\]
+
+so
+
+\[
+\frac{S_X(d_X)}{B_X}
+=
+\frac{10^4}{10^{12}}
+=
+10^{-8}.
+\]
+
+Thus switching cost is not prohibitive relative to annual budget. This falsifies \(C4(ii)\).
+
+Next let usage grow over time:
+
+\[
+u_X(t)=t.
+\]
+
+But keep depth fixed:
+
+\[
+d_X(t)=100.
+\]
+
+Then
+
+\[
+S_X(d_X(t))=10^4
+\]
+
+for all \(t\). Usage grows, but integration depth and switching cost do not grow. This falsifies \(C4(iii)\).
+
+Finally, suppose each system can remove AI by paying the switching cost
+
+\[
+10^4.
+\]
+
+Since
+
+\[
+10^4 \ll 10^{12},
+\]
+
+removal is feasible in this model. Hence the systems are not irrevocably AI-dependent. This falsifies \(C4(iv)\).
+
+Therefore the theorem as stated is not a logical consequence of \(A3\) and \(A4\).
+
+---
+
+## A Rigorous Weakened Theorem That Does Follow
+
+A defensible replacement theorem would be:
+
+```tex
+\begin{theorem}[Quadratic Switching-Cost Exposure]
+Under Assumptions A3 and A4, AI is operationally embedded in four listed
+critical societal systems. Moreover, for any such system whose relevant
+AI pipeline has integration depth $d \ge d_0$, removing AI from that pipeline
+incurs switching cost at least $c d^2$ for some constants $c>0$ and $d_0>0$.
+Thus deeply integrated AI deployments in these systems have switching costs
+that grow at least quadratically with integration depth.
+\end{theorem}
+```
+
+A rigorous proof would be:
+
+```tex
+\begin{proof}
+By Assumption A3, AI systems are operationally embedded in energy
+infrastructure, healthcare, fiscal systems, and education. Assumption A3 also
+states that each of these systems is operationally critical. Hence AI is
+embedded in four listed operationally critical societal systems.
+
+By Assumption A4, removing AI from a pipeline at integration depth $d$ incurs
+switching cost $S(d)=\Omega(d^2)$. Therefore there exist constants $c>0$ and
+$d_0>0$ such that for all $d \ge d_0$,
+\[
+S(d) \ge c d^2.
+\]
+Consequently, for any listed system whose relevant AI pipeline has integration
+depth $d \ge d_0$, removing AI from that pipeline costs at least $c d^2$.
+
+Thus, in the four systems identified by Assumption A3, any sufficiently deeply
+integrated AI deployment is exposed to switching costs that grow at least
+quadratically in integration depth.
+\end{proof}
+```
+
+---
+
+## What Additional Assumptions Would Be Needed for the Original \(C4\)
+
+To prove the original theorem, one would need additional assumptions such as the following.
+
+First, define annual operating budgets. For each system \(X\), let
+
+\[
+B_X>0
+\]
+
+be its annual operating budget.
+
+Second, define “prohibitive.” For example, switching cost could be called prohibitive if
+
+\[
+S_X(d_X) \ge \alpha B_X
+\]
+
+for some fixed
+
+\[
+\alpha \in (0,1].
+\]
+
+Third, assume the relevant depths are large enough:
+
+\[
+d_X \ge \sqrt{\frac{\alpha B_X}{c}}
+\]
+
+for each listed system \(X\). Combined with
+
+\[
+S_X(d_X) \ge c d_X^2,
+\]
+
+this would imply
+
+\[
+S_X(d_X) \ge \alpha B_X.
+\]
+
+Fourth, assume usage increases integration depth. For example, if \(u_X(t)\) denotes usage and \(d_X(t)\) denotes integration depth, assume
+
+\[
+u_X(t_2)>u_X(t_1)
+\implies
+d_X(t_2)\ge d_X(t_1),
+\]
+
+or more strongly,
+
+\[
+u_X(t_2)>u_X(t_1)
+\implies
+d_X(t_2)>d_X(t_1).
+\]
+
+Fifth, assume high switching costs force continued use. For example,
+
+\[
+S_X(d_X(t)) \ge \alpha B_X(t)
+\implies
+\text{AI removal from } X \text{ is practically infeasible at time } t.
+\]
+
+Only with assumptions of this kind could one rigorously prove the original self-reinforcing lock-in conclusion.
+
+---
+
+## Conclusion
+
+The theorem \(C4\) is **not provable from \(A3\) and \(A4\) alone**.
+
+What follows rigorously is only this:
+
+\[
+A3 + A4
+\implies
+\text{AI is embedded in four listed critical systems, and sufficiently deep AI integrations have switching costs } \Omega(d^2).
+\]
+
+But the stronger claims
+
+\[
+\text{switching costs are budget-prohibitive},
+\]
+
+\[
+\text{usage growth necessarily increases integration depth},
+\]
+
+and
+
+\[
+\text{AI dependence is irrevocable}
+\]
+
+require additional assumptions not present in \(A3\) or \(A4\).
