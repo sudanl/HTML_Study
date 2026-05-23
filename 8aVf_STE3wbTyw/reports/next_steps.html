@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Next Steps — test_0523 (AI is the Future proof)</title>
+  <style>
+    body { font-family: Georgia, serif; max-width: 860px; margin: 2em auto; line-height: 1.6; color: #222; }
+    h1 { border-bottom: 2px solid #444; padding-bottom: 0.3em; }
+    h2 { color: #2a4a7f; margin-top: 1.8em; }
+    h3 { color: #444; }
+    table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+    th, td { border: 1px solid #ccc; padding: 0.5em 0.8em; text-align: left; }
+    th { background: #f0f0f0; }
+    .done { color: #2a7a2a; font-weight: bold; }
+    .partial { color: #a06000; font-weight: bold; }
+    .todo { color: #c00; font-weight: bold; }
+    code { background: #f4f4f4; padding: 0.1em 0.3em; border-radius: 3px; font-size: 0.95em; }
+    pre { background: #f4f4f4; padding: 1em; border-radius: 4px; overflow-x: auto; }
+  </style>
+</head>
+<body>
+
+<h1>Milestone Report: <em>证明AI是未来</em> (Proof That AI Is the Future)</h1>
+<p><strong>Project:</strong> test_0523 &nbsp;|&nbsp;
+   <strong>Date:</strong> 2026-05-23 &nbsp;|&nbsp;
+   <strong>Repository:</strong>
+   <a href="https://github.com/sudanl/HTML_Study">sudanl/HTML_Study</a>
+   (subfolder <code>8aVf_STE3wbTyw/proof/</code>)</p>
+
+<hr>
+
+<h2>What Was Completed</h2>
+
+<h3>Problem Framing</h3>
+<p>The proposition "AI is the future" was formalized as a <strong>conditional theorem</strong>
+with five explicit empirical assumptions (A1–A5, plus A4b) and four independently
+derivable conclusions (C1–C4), with an acyclic dependency graph:</p>
+<pre>A1 → C1    A2+A4 → C2    A5 → C3    A3+A4+A4b → C4</pre>
+
+<h3>Proof Sections Produced</h3>
+<table>
+  <tr><th>Section</th><th>Claim</th><th>Assumptions</th><th>Status</th></tr>
+  <tr>
+    <td>1</td><td>Capability Inevitability (C1)</td><td>A1</td>
+    <td class="partial">⏳ Verifier running (v3 hand-written)</td>
+  </tr>
+  <tr>
+    <td>2</td><td>Economic Lock-In (C2)</td><td>A2, A4</td>
+    <td class="partial">⏳ Verifier running (v4 hand-written)</td>
+  </tr>
+  <tr>
+    <td>3</td><td>Scientific Force Multiplication (C3)</td><td>A5</td>
+    <td class="partial">⏳ Verifier running (v5 hand-written)</td>
+  </tr>
+  <tr>
+    <td>4</td><td>Structural Unavoidability (C4)</td><td>A3, A4, A4b</td>
+    <td class="partial">⏳ Verifier running (v4 hand-written)</td>
+  </tr>
+  <tr>
+    <td>5</td><td>Synthesis</td><td>C1–C4</td>
+    <td class="done">✅ Written and compiles</td>
+  </tr>
+</table>
+
+<h3>Assembled Document</h3>
+<p><code>proof/main.tex</code> assembles all five sections into a 14-page PDF
+(<code>proof/main.pdf</code>), compiles with zero undefined references, and is
+committed to GitHub.</p>
+
+<h3>Key Proof Approaches (per section)</h3>
+<ul>
+  <li><strong>C1:</strong> L(C_B(t)) = A·exp(−βt) → strictly decreasing loss; κ(t) = exp(βt)/A → strictly convex capability; A1.5 + initial advantage → economic domination.</li>
+  <li><strong>C2:</strong> NPV differential = −S(d) − (Π_AI − Π_0)/ρ ≤ −cd² − γΠ₀/ρ &lt; 0 for all d ≥ 1, ρ &gt; 0. Clean algebraic bound.</li>
+  <li><strong>C3:</strong> Type-A/Type-B beyond-record definitions; AlphaFold2 (Type-A: 50-year open problem), GNoME (Type-B: &gt;100× prior corpus). Explicit same-task speedup for drug discovery (8/3 &gt; 2).</li>
+  <li><strong>C4:</strong> A4.4 budget calibration closes S(d_X) ≥ B_X; depth-growth induction proves S strictly increases; A4b states no short-term substitute. Claim (iv) carefully scoped to "doubly entrenched" (not "impossible").</li>
+</ul>
+
+<hr>
+
+<h2>What Remains</h2>
+
+<h3>Immediate (to complete the MVP)</h3>
+<ol>
+  <li><strong>Wait for running verifiers</strong> — Sections 1, 2, 3, 4 each have a verifier
+    currently active. Process results and apply minimal targeted fixes if any gaps remain.</li>
+  <li><strong>Rebuild body files</strong> — After any section edits, re-run the
+    <code>sed</code> extraction to update <code>section_N_body.tex</code> files, then
+    recompile <code>main.tex</code>.</li>
+  <li><strong>Final pessimistic check</strong> — Run
+    <code>proof_verifier(mode=pessimistic)</code> on <code>main.tex</code> once all
+    sections are CLEAN.</li>
+  <li><strong>Final PDF + push</strong> — Compile final <code>main.pdf</code>, commit,
+    push to GitHub.</li>
+</ol>
+
+<h3>Prioritized Roadmap</h3>
+<table>
+  <tr><th>Priority</th><th>Task</th><th>Est. Budget</th></tr>
+  <tr>
+    <td>P1 (critical)</td>
+    <td>Fix any verifier-flagged issues in sections 1–4 (targeted text edits only)</td>
+    <td>$0.10–$0.20</td>
+  </tr>
+  <tr>
+    <td>P1 (critical)</td>
+    <td>Rebuild body files + recompile main.tex after any edits</td>
+    <td>$0.00 (local)</td>
+  </tr>
+  <tr>
+    <td>P1 (critical)</td>
+    <td>Final pessimistic proof_verifier on assembled main.tex</td>
+    <td>$0.15–$0.20</td>
+  </tr>
+  <tr>
+    <td>P2 (nice-to-have)</td>
+    <td>Add more empirical citations to bibliography</td>
+    <td>$0.00 (local)</td>
+  </tr>
+  <tr>
+    <td>P3 (optional)</td>
+    <td>Add a dedicated problem statement section to main.tex (currently in intro)</td>
+    <td>$0.00 (local)</td>
+  </tr>
+</table>
+
+<h2>How to Resume</h2>
+<pre>
+# Working directory
+cd /data/projects/9dbf2e6b-7ecc-47af-bbc2-e2fabcba3f52/HTML_Study/8aVf_STE3wbTyw
+
+# Current state: all four section .tex files contain hand-written proofs.
+# After editing any section file:
+cd proof/
+sed -n '/\\begin{document}/,/\\end{document}/p' section_N_foo.tex | sed '1d;$d' | sed '/^\\section\*/d' > section_N_body.tex
+pdflatex -interaction=nonstopmode main.tex
+pdflatex -interaction=nonstopmode main.tex   # second pass for refs
+
+# Commit and push
+git -C /data/projects/.../HTML_Study add 8aVf_STE3wbTyw/proof/
+git -C /data/projects/.../HTML_Study commit -m "fix: ..."
+git -C /data/projects/.../HTML_Study push origin main
+</pre>
+
+<h2>Estimated Budget Remaining</h2>
+<p>Approximately <strong>$0.50–$0.80</strong> remaining. This is sufficient for
+processing the 4 running verifier results + 1 final pessimistic check.
+Do <em>not</em> start new brainstorm or large generator calls.</p>
+
+</body>
+</html>
