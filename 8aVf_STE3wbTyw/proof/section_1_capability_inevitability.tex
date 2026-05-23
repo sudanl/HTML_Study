@@ -1,0 +1,70 @@
+% Section 1 — Conclusion C1: Capability Inevitability
+% Derives: AI capability growth is self-reinforcing and accelerating,
+%          making reversion to a pre-AI baseline economically irrational.
+% Depends on: Assumption A1 ONLY (Scaling Laws + Compute Decline)
+%
+% SELF-CONTAINED: All needed definitions and assumptions are stated here.
+
+\documentclass[12pt]{article}
+\usepackage{lmodern}
+\usepackage{xcolor}
+\usepackage{amsmath, amsthm, amssymb}
+\usepackage[margin=1in]{geometry}
+\input{_macros}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{assumption}{Assumption}
+\newtheorem{definition}{Definition}
+
+\begin{document}
+
+\section*{Section 1: Capability Inevitability (C1)}
+
+\subsection*{Assumption Used}
+
+\begin{assumption}[Scaling Laws and Compute Decline (A1)]
+  For large neural-network models trained with compute $C$ on dataset of size
+  $|D|$, task performance $P$ improves as a power law:
+  \[
+    L(C) \;=\; \left(\frac{C_0}{C}\right)^{\alpha},
+    \quad \alpha > 0,
+  \]
+  where $L$ is cross-entropy loss (lower = better) and $C_0, \alpha$ are
+  positive constants fitted from data (Kaplan et al.\ 2020; Hoffmann et al.\ 2022).
+  Independently, the hardware cost per FLOP declines exponentially:
+  \[
+    \text{Cost}(t) \;=\; \text{Cost}(t_0)\cdot r^{-(t-t_0)},
+    \quad r \approx 1.5 \text{ per year},
+  \]
+  for a planning horizon of at least 10 years.
+\end{assumption}
+
+\subsection*{Statement to Prove (C1)}
+
+\begin{theorem}[Capability Inevitability]
+  Under Assumption~A1, AI capability growth is self-reinforcing and
+  proceeds at an accelerating effective rate over a 10-year horizon,
+  making it economically irrational to revert to a pre-AI capability
+  baseline.  More precisely:
+  \begin{enumerate}
+    \item[(i)] For any fixed budget $B$, the performance achievable by the
+      best AI system purchasable within $B$ strictly increases over time.
+    \item[(ii)] The rate of capability gain per unit of calendar time is
+      non-decreasing over the planning horizon.
+    \item[(iii)] Any organization operating a pre-AI system incurs a
+      growing capability deficit relative to AI-adopting peers, making
+      reversion economically dominated.
+  \end{enumerate}
+\end{theorem}
+
+\subsection*{Proof}
+
+\textit{(Generator: produce a rigorous proof of (i), (ii), and (iii) using
+only the quantitative content of Assumption A1.  Use formal definitions of
+``capability deficit'' and ``economically dominated'' strategy.  The argument
+should be self-contained and proceed step by step.)}
+
+\textcolor{red}{TODO: proof of C1}
+
+\end{document}

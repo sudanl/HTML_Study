@@ -1,9 +1,15 @@
 \documentclass[12pt]{article}
+\usepackage{lmodern}
 \usepackage{xcolor}
 \usepackage{amsmath, amsthm, amssymb}
 \usepackage[margin=1in]{geometry}
 
 \input{_macros}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{assumption}{Assumption}
+\newtheorem{definition}{Definition}
 
 \title{\textbf{Proof That Artificial Intelligence Is the Future}}
 \author{Project: test\_0523}
@@ -12,40 +18,113 @@
 \begin{document}
 \maketitle
 
-\section*{Problem Statement}
+\section*{Problem Statement and Proof Structure}
 
-\textbf{Proposition (AI is the Future):} Artificial Intelligence (AI) represents
-the defining technological paradigm of humanity's future development.
+We prove the following conditional theorem, deriving each conclusion rigorously
+from explicitly stated, empirically documented assumptions.  The dependency graph
+is strictly acyclic (see below).
 
-\medskip
+\begin{theorem}[AI Is the Future]\label{thm:main}
+  Under Assumptions \ref{A1}--\ref{A5} below, Artificial Intelligence (AI)
+  constitutes the defining technological paradigm of humanity's future
+  development, evidenced by the following four independently derived conclusions:
+  \begin{itemize}
+    \item[(C1)] \emph{Capability Inevitability.}  AI systems exhibit
+      self-reinforcing capability growth driven by scaling laws and declining
+      hardware costs, making regression to a pre-AI capability baseline
+      economically irrational.  (\emph{Derived from A1 only.})
+    \item[(C2)] \emph{Economic Lock-In.}  Once AI is adopted at scale, the
+      combination of demonstrated productivity gains and super-linear switching
+      costs makes that adoption economically irreversible at a societal level.
+      (\emph{Derived from A2 + A4.})
+    \item[(C3)] \emph{Scientific Force Multiplication.}  AI measurably shortens
+      the time from hypothesis to validated discovery across scientific domains,
+      constituting a qualitative leap in humanity's research capacity.
+      (\emph{Derived from A5 only.})
+    \item[(C4)] \emph{Structural Unavoidability.}  AI's current deep embedding
+      in critical societal systems, combined with super-linear switching costs,
+      makes its continued role structurally unavoidable and self-reinforcing.
+      (\emph{Derived from A3 + A4.})
+  \end{itemize}
+  Together, C1--C4 establish that AI is not a transient technology but the
+  defining paradigm of humanity's future.
+\end{theorem}
 
-More precisely, we establish the following four pillars:
+\subsection*{Acyclic Dependency Graph}
 
-\begin{enumerate}
-  \item \textbf{Technological Inevitability:} The trajectory of computational
-    progress---governed by empirical scaling laws and sustained hardware
-    advances---implies AI systems will continue improving at an accelerating
-    rate, making regression to a pre-AI paradigm effectively impossible.
+\[
+\text{A1} \;\Rightarrow\; \text{C1}
+\qquad
+\text{A2}+\text{A4} \;\Rightarrow\; \text{C2}
+\qquad
+\text{A5} \;\Rightarrow\; \text{C3}
+\qquad
+\text{A3}+\text{A4} \;\Rightarrow\; \text{C4}
+\]
 
-  \item \textbf{Economic Transformation:} AI-driven automation and optimization
-    restructure labor markets, productivity, and economic growth in ways that
-    make AI adoption economically irreversible at a societal scale.
+\noindent Note: C1, C2, C3, C4 are \emph{independent}.  No conclusion is used
+as a premise for any other.
 
-  \item \textbf{Scientific Acceleration:} AI augments human cognitive capacity
-    in research and discovery, acting as a force multiplier across all scientific
-    disciplines and shortening the timeline from question to breakthrough.
+\section*{Empirical Assumptions}
 
-  \item \textbf{Societal Integration:} The pervasive embedding of AI into
-    critical infrastructure, healthcare, education, and governance makes its
-    role as a foundational future technology structurally unavoidable.
-\end{enumerate}
+\begin{assumption}[Scaling Laws and Compute Decline]\label{A1}
+  For large neural-network models, empirical studies show that task performance
+  improves as a predictable power law in training compute $C$ and dataset size
+  $|D|$ (Kaplan et al.\ 2020; Hoffmann et al.\ 2022).  Independently, the
+  cost per floating-point operation (FLOP) in hardware has declined at
+  roughly $1.5\times$ per year for the past decade.  We take both trends as
+  given for the foreseeable future ($\sim$10-year planning horizon).
+\end{assumption}
 
-\medskip
-\textbf{Goal:} Provide a rigorous, multi-faceted argument establishing each
-of the four pillars above and synthesize them into a coherent proof of the
-proposition.
+\begin{assumption}[Documented Productivity Gains]\label{A2}
+  Peer-reviewed studies document statistically significant AI-driven
+  productivity gains across sectors:
+  \begin{itemize}
+    \item Software development: GitHub Copilot users complete coding tasks
+      55\% faster (Peng et al.\ 2023).
+    \item Radiology: AI-assisted diagnosis cuts reading time by 30--50\%
+      with non-inferior accuracy (multiple RCTs, 2020--2024).
+    \item Cross-sector: McKinsey Global Institute (2023) estimates
+      \$2.6--4.4T annual value add from generative AI.
+  \end{itemize}
+\end{assumption}
+
+\begin{assumption}[Current Sectoral Penetration]\label{A3}
+  As of 2024, AI systems are \emph{operationally embedded} in:
+  power-grid load balancing (national grids in EU, US, China);
+  hospital triage and diagnostics (FDA-cleared tools in $>$40\% of US
+  hospitals); national tax/fraud detection (IRS, HMRC);
+  adaptive K--12 education platforms used by $>$50M students.
+  AlphaFold2's protein-structure database is used by $>$1M researchers across
+  190 countries.
+\end{assumption}
+
+\begin{assumption}[Super-Linear Switching Costs]\label{A4}
+  Once AI is integrated into a production pipeline or institution, the cost
+  of removing it (staff retraining, infrastructure replacement, regulatory
+  re-approval, data-pipeline redesign) grows super-linearly with integration
+  depth.  Formally: if $d$ is integration depth, switching cost $S(d) = \Omega(d^2)$.
+\end{assumption}
+
+\begin{assumption}[Documented Scientific Breakthroughs]\label{A5}
+  AI has produced documented scientific results that were intractable without it:
+  \begin{itemize}
+    \item AlphaFold2 solved the 50-year protein-folding prediction problem (2021).
+    \item Insilico Medicine's AI-designed drug candidate reached IND approval
+      in 18 months, vs.\ a 4--6 year human-only average (2023).
+    \item GNoME (DeepMind, 2023) discovered 2.2M novel crystal structures,
+      surpassing all prior human experimental discovery combined.
+    \item AI-assisted formal proof search (Lean4, 2023--2024) has produced
+      novel proof strategies for open combinatorics problems.
+  \end{itemize}
+\end{assumption}
 
 \bigskip\hrule\bigskip
-\textit{(Proof to follow in subsequent sections.)}
+
+\textbf{Proof.} We prove C1--C4 independently in Sections 1--4, then
+synthesize them in Section~5 to conclude Theorem~\ref{thm:main}.
+
+\bigskip
+\textit{(Sections to follow.)}
 
 \end{document}

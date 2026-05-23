@@ -1,0 +1,60 @@
+% Section 2 — Conclusion C2: Economic Lock-In
+% Derives: AI adoption is economically irreversible at societal scale.
+% Depends on: Assumption A2 (Productivity Gains) + A4 (Super-Linear Switching Costs)
+%
+% SELF-CONTAINED: All needed definitions and assumptions are stated here.
+
+\documentclass[12pt]{article}
+\usepackage{lmodern}
+\usepackage{xcolor}
+\usepackage{amsmath, amsthm, amssymb}
+\usepackage[margin=1in]{geometry}
+\input{_macros}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{assumption}{Assumption}
+\newtheorem{definition}{Definition}
+
+\begin{document}
+
+\section*{Section 2: Economic Lock-In (C2)}
+
+\subsection*{Assumptions Used}
+
+\begin{assumption}[Documented Productivity Gains (A2)]
+  AI adoption delivers statistically significant, sustained productivity gains
+  across sectors.  Formally, for an organization at integration depth $d \geq 1$,
+  let $\Pi_{\mathrm{AI}}(d)$ be annual productivity and $\Pi_0$ the pre-AI
+  baseline.  Empirical data establish that
+  $\Pi_{\mathrm{AI}}(d) \geq (1 + \gamma)\,\Pi_0$ for some $\gamma > 0$
+  (with $\gamma \approx 0.3$--$0.55$ in documented cases).
+\end{assumption}
+
+\begin{assumption}[Super-Linear Switching Costs (A4)]
+  Removing AI from a pipeline at integration depth $d$ incurs switching cost
+  $S(d) = \Omega(d^2)$ — i.e., there exists $c > 0$ such that
+  $S(d) \geq c\,d^2$ for all $d \geq 1$.
+\end{assumption}
+
+\subsection*{Statement to Prove (C2)}
+
+\begin{theorem}[Economic Lock-In]
+  Under Assumptions A2 and A4, once AI integration depth $d$ exceeds a
+  computable threshold $d^* > 0$, the net present value of reverting to the
+  pre-AI baseline is strictly negative for any positive discount rate $\rho > 0$.
+  Consequently, continued AI adoption is the unique economically rational
+  strategy at the societal scale, making AI adoption irreversible.
+\end{theorem}
+
+\subsection*{Proof}
+
+\textit{(Generator: produce a rigorous proof.  Define the adoption-vs-reversion
+NPV comparison formally.  Show that for $d \geq d^*$, the one-time switching
+cost $S(d)$ plus foregone productivity stream exceed the benefits of reversion
+for all $\rho > 0$.  Derive $d^*$ explicitly in terms of $\gamma$, $c$, and $\rho$.
+The proof should be self-contained and use only A2 and A4.)}
+
+\textcolor{red}{TODO: proof of C2}
+
+\end{document}

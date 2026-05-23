@@ -1,0 +1,81 @@
+% Section 4 — Conclusion C4: Structural Unavoidability
+% Derives: AI's embedding in critical societal systems is self-reinforcing
+%          and structurally unavoidable.
+% Depends on: Assumption A3 (Current Sectoral Penetration) + A4 (Switching Costs)
+%
+% SELF-CONTAINED: All needed definitions and assumptions are stated here.
+
+\documentclass[12pt]{article}
+\usepackage{lmodern}
+\usepackage{xcolor}
+\usepackage{amsmath, amsthm, amssymb}
+\usepackage[margin=1in]{geometry}
+\input{_macros}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{assumption}{Assumption}
+\newtheorem{definition}{Definition}
+
+\begin{document}
+
+\section*{Section 4: Structural Unavoidability (C4)}
+
+\subsection*{Assumptions Used}
+
+\begin{assumption}[Current Sectoral Penetration (A3)]
+  As of 2024, AI systems are operationally embedded in the following
+  \emph{critical societal systems}:
+  \begin{enumerate}
+    \item \textbf{Energy infrastructure}: AI manages load balancing in
+      national power grids (EU, US, China).
+    \item \textbf{Healthcare}: FDA-cleared AI diagnostic tools are in use at
+      $>$40\% of US hospitals; AlphaFold2 is used by $>$1M researchers.
+    \item \textbf{Fiscal systems}: AI drives fraud detection and tax-gap
+      analysis at the IRS and HMRC.
+    \item \textbf{Education}: AI-powered adaptive learning platforms serve
+      $>$50M K--12 students worldwide.
+  \end{enumerate}
+  Each of these systems is operationally critical: failure or degradation
+  causes measurable societal harm.
+\end{assumption}
+
+\begin{assumption}[Super-Linear Switching Costs (A4)]
+  Removing AI from a pipeline at integration depth $d$ incurs switching cost
+  $S(d) = \Omega(d^2)$.  For operationally critical systems,
+  deep integration ($d \gg 1$) is the norm.
+\end{assumption}
+
+\subsection*{Statement to Prove (C4)}
+
+\begin{theorem}[Structural Unavoidability]
+  Under Assumptions A3 and A4:
+  \begin{enumerate}
+    \item[(i)] AI is already embedded in at least four independent critical
+      societal systems at high integration depth.
+    \item[(ii)] Removing AI from any of these systems would incur switching
+      costs that are prohibitive relative to the system's annual operating
+      budget, making removal practically infeasible.
+    \item[(iii)] As usage within each system grows, integration depth
+      increases, further raising switching costs — creating a
+      self-reinforcing lock-in dynamic.
+    \item[(iv)] Therefore, AI's role in these societal systems is
+      structurally unavoidable: the societal infrastructure is now
+      irrevocably AI-dependent.
+  \end{enumerate}
+\end{theorem}
+
+\subsection*{Proof}
+
+\textit{(Generator: produce a rigorous argument.  For (i), cite the four
+systems in A3 and argue they are critical and independent.  For (ii), use A4
+to bound switching costs relative to system budgets — you may introduce
+reasonable order-of-magnitude estimates for healthcare IT, power-grid, and
+education platform budgets to make the comparison concrete.  For (iii), argue
+the positive-feedback loop: more use $\Rightarrow$ deeper integration
+$\Rightarrow$ higher switching costs $\Rightarrow$ continued use.  For (iv),
+synthesize.  Use only A3 and A4.)}
+
+\textcolor{red}{TODO: proof of C4}
+
+\end{document}
