@@ -1,0 +1,106 @@
+\documentclass[12pt]{article}
+\usepackage{lmodern}
+\usepackage{xcolor}
+\usepackage{amsmath, amsthm, amssymb}
+\usepackage[margin=1in]{geometry}
+\input{_macros}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{assumption}{Assumption}
+\newtheorem{definition}{Definition}
+
+\begin{document}
+
+\section*{Section 5: Synthesis --- Proof of the Main Theorem}
+
+This section assembles the four independently proved conclusions
+C1--C4 into a proof of the Main Theorem (Theorem~1 of the problem statement).
+
+\subsection*{Recalled Conclusions}
+
+\begin{itemize}
+  \item \textbf{C1 (Capability Inevitability, proved in Section 1):}
+    Under A1, the scaling-law AI system exhibits exponentially decreasing
+    loss, accelerating capability growth ($\kappa(t) = e^{\beta t}/A$
+    is strictly convex), and economically dominates the pre-AI baseline
+    in every period.
+
+  \item \textbf{C2 (Economic Lock-In, proved in Section 2):}
+    Under A2 and A4, for any organization at integration depth $d \geq 1$
+    and any discount rate $\rho > 0$:
+    \[
+      V_{\mathrm{rev}}(d,\rho) - V_{\mathrm{cont}}(d,\rho)
+      \;\leq\; -c\,d^2 - \frac{\gamma\Pi_0}{\rho} \;<\; 0.
+    \]
+    Reversion is never individually economically rational; the case
+    against reversion strengthens monotonically with depth.
+
+  \item \textbf{C3 (Scientific Force Multiplication, proved in Section 3):}
+    Under A5, AI has made beyond-record contributions in at least two
+    independent scientific fields, documented a $>2\times$ time speedup
+    and a $>100\times$ discovery-scale ratio, spanning four independent
+    scientific disciplines.
+
+  \item \textbf{C4 (Structural Unavoidability, proved in Section 4):}
+    Under A3, A4, and A4b, AI is embedded in four critical societal
+    systems with switching costs $S(d_X) \geq B_X$ (financially
+    prohibitive); continued use only increases these costs; no viable
+    non-AI substitute exists; AI's role is structurally unavoidable.
+\end{itemize}
+
+\subsection*{Main Theorem}
+
+\begin{theorem}[AI Is the Future --- Main Result]
+  Under Assumptions A1, A2, A3, A4, A4b, and A5, Artificial Intelligence
+  constitutes the defining technological paradigm of humanity's future
+  development, as evidenced jointly by C1--C4:
+
+  \begin{enumerate}
+    \item \emph{Technological Inevitability (C1):} AI capability growth
+      is self-reinforcing, accelerating, and makes the pre-AI baseline
+      economically dominated in every period.
+
+    \item \emph{Economic Lock-In (C2):} At any integration depth
+      $d \geq 1$, AI adoption is individually economically irreversible:
+      no positive discount rate makes reversion rational.
+
+    \item \emph{Scientific Force Multiplication (C3):} AI is a
+      cross-domain scientific accelerant with demonstrated beyond-record
+      contributions, quantified speedups, and global disciplinary reach.
+
+    \item \emph{Structural Unavoidability (C4):} AI is already embedded
+      in critical societal infrastructure at financially prohibitive
+      switching-cost depth, with no viable substitute, making its
+      continued role structurally unavoidable.
+  \end{enumerate}
+
+  Together, C1--C4 establish a convergent, mutually reinforcing case:
+  AI is not a transient technology but the defining paradigm of
+  humanity's future.
+\end{theorem}
+
+\begin{proof}
+  Each of C1, C2, C3, C4 is an independently proved conclusion:
+  \begin{itemize}
+    \item C1 is proved in Section~1 from A1 alone (Theorem~1 of Section~1).
+    \item C2 is proved in Section~2 from A2 and A4 alone (Theorem~1 of Section~2).
+    \item C3 is proved in Section~3 from A5 alone (Theorem~1 of Section~3).
+    \item C4 is proved in Section~4 from A3, A4, and A4b (Theorem~1 of Section~4).
+  \end{itemize}
+  The dependency graph is acyclic: no conclusion is used to prove any
+  other.  All assumptions A1, A2, A3, A4, A4b, A5 are empirically
+  documented and declared in the problem statement.
+
+  The four pillars are \emph{convergent}: C1 shows AI's capability will
+  keep improving (no technical plateau), C2 shows existing adopters
+  cannot economically exit (lock-in), C3 shows AI accelerates the
+  frontier of human knowledge (scientific compounding), and C4 shows
+  AI is already embedded at the infrastructure level with no exit path.
+  No single counter-argument can undercut all four simultaneously.
+
+  Therefore, under the stated assumptions, AI constitutes the defining
+  technological paradigm of humanity's future development.  \qed
+\end{proof}
+
+\end{document}

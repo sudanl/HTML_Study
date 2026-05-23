@@ -1,0 +1,130 @@
+\documentclass[12pt]{article}
+\usepackage{lmodern}
+\usepackage{xcolor}
+\usepackage{amsmath, amsthm, amssymb}
+\usepackage[margin=1in]{geometry}
+\usepackage{hyperref}
+
+\input{_macros}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{assumption}{Assumption}[section]
+\newtheorem{definition}{Definition}[section]
+
+\title{\textbf{Proof That Artificial Intelligence Is the Future}\\[4pt]
+  \large (``\emph{Zhengming AI shi weilai}'')}
+\author{Project: test\_0523}
+\date{\today}
+
+\begin{document}
+\maketitle
+\tableofcontents
+\newpage
+
+%% ─── Problem Statement ──────────────────────────────────────────────────────
+\section{Problem Statement and Structure}
+
+We prove the following conditional theorem.
+
+\begin{theorem}[AI Is the Future]\label{thm:main}
+  Under Assumptions A1--A5 and A4b (stated in Sections 2--5), Artificial
+  Intelligence (AI) constitutes the defining technological paradigm of
+  humanity's future development, as evidenced by four independently
+  proved conclusions:
+  \begin{enumerate}
+    \item[(C1)] \emph{Capability Inevitability} (from A1):
+      AI capability growth is self-reinforcing, accelerating, and
+      economically dominates the pre-AI baseline in every period.
+    \item[(C2)] \emph{Economic Lock-In} (from A2, A4):
+      At any integration depth $d \geq 1$, AI adoption is individually
+      economically irreversible under any positive discount rate.
+    \item[(C3)] \emph{Scientific Force Multiplication} (from A5):
+      AI is a cross-domain scientific accelerant with beyond-record
+      contributions, quantified time speedups, and global disciplinary
+      reach.
+    \item[(C4)] \emph{Structural Unavoidability} (from A3, A4, A4b):
+      AI is embedded in critical societal infrastructure at financially
+      prohibitive switching-cost depth, with no viable substitute.
+  \end{enumerate}
+\end{theorem}
+
+\textbf{Dependency graph (acyclic):}
+\[
+\text{A1} \;\Rightarrow\; \text{C1}
+\qquad
+\text{A2}+\text{A4} \;\Rightarrow\; \text{C2}
+\qquad
+\text{A5} \;\Rightarrow\; \text{C3}
+\qquad
+\text{A3}+\text{A4}+\text{A4b} \;\Rightarrow\; \text{C4}
+\]
+No conclusion is used to prove any other.
+
+%% ─── Section 1: C1 ──────────────────────────────────────────────────────────
+\newpage
+\section{Capability Inevitability (C1)}
+
+\input{section_1_body}
+
+%% ─── Section 2: C2 ──────────────────────────────────────────────────────────
+\newpage
+\section{Economic Lock-In (C2)}
+
+\input{section_2_body}
+
+%% ─── Section 3: C3 ──────────────────────────────────────────────────────────
+\newpage
+\section{Scientific Force Multiplication (C3)}
+
+\input{section_3_body}
+
+%% ─── Section 4: C4 ──────────────────────────────────────────────────────────
+\newpage
+\section{Structural Unavoidability (C4)}
+
+\input{section_4_body}
+
+%% ─── Section 5: Synthesis ───────────────────────────────────────────────────
+\newpage
+\section{Synthesis: Proof of the Main Theorem}
+
+The four conclusions C1--C4, proved independently in Sections 2--5,
+jointly establish Theorem~\ref{thm:main}.
+
+\begin{proof}[Proof of Theorem~\ref{thm:main}]
+  \begin{itemize}
+    \item C1 is proved in Section~2 from A1 alone.
+    \item C2 is proved in Section~3 from A2 and A4 alone.
+    \item C3 is proved in Section~4 from A5 alone.
+    \item C4 is proved in Section~5 from A3, A4, and A4b.
+  \end{itemize}
+  The dependency graph is acyclic; all assumptions are empirically
+  documented.  The four pillars are convergent: C1 guarantees
+  continued capability improvement, C2 locks in existing adopters,
+  C3 compounds scientific progress, and C4 embeds AI at the
+  infrastructure level with no viable exit.  No single counter-argument
+  can undercut all four simultaneously.
+
+  Therefore, under the stated assumptions, AI constitutes the defining
+  technological paradigm of humanity's future development.
+\end{proof}
+
+\begin{thebibliography}{9}
+\bibitem{kaplan2020} J.\ Kaplan et al., ``Scaling Laws for Neural Language
+  Models,'' arXiv:2001.08361, 2020.
+\bibitem{hoffmann2022} J.\ Hoffmann et al., ``Training Compute-Optimal
+  Large Language Models,'' arXiv:2203.15556, 2022.
+\bibitem{peng2023} S.\ Peng et al., ``The Impact of AI on Developer
+  Productivity,'' arXiv:2302.06590, 2023.
+\bibitem{jumper2021} J.\ Jumper et al., ``Highly accurate protein structure
+  prediction with AlphaFold,'' \textit{Nature} 596, 583--589 (2021).
+\bibitem{insilico2023} A.\ Zhavoronkov et al., ``Generative AI for de novo
+  drug design,'' \textit{Nature Biotechnology} 41, 1520--1521 (2023).
+\bibitem{gnome2023} C.\ Merchant et al., ``Scaling deep learning for
+  materials discovery,'' \textit{Nature} 624, 80--85 (2023).
+\bibitem{mckinsey2023} McKinsey Global Institute, ``The economic potential
+  of generative AI,'' June 2023.
+\end{thebibliography}
+
+\end{document}
